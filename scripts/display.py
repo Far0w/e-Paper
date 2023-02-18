@@ -70,6 +70,7 @@ class Canva: # Object to draw on
             self.width  = display_width
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.objects = [Rectangle(100,100,100,100)]
+        self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         
     def add_object(self, object):
         self.object.append(module)
