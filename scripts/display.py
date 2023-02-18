@@ -42,7 +42,7 @@ class Display:
     
     def _update_display(self, img):
         #self.canva.update()
-        self.epd.display(self.epd.getbuffer(canva.image))
+        self.epd.display(self.epd.getbuffer(self.canva.image))
     
     def clear(self):
         logging.info("Clear...")
