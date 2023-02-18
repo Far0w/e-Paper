@@ -38,12 +38,11 @@ class Display:
         
     def canva1(self):
         self.canva.draw_rect()
-        
-        self._update_display()
+        self._update_display(self.canva.image)
     
     def _update_display(self, img):
         canva.update()
-        self.epd.display(self.epd.getbuffer(canva.canva_image))
+        self.epd.display(self.epd.getbuffer(canva.image))
     
     def clear(self):
         logging.info("Clear...")
@@ -75,9 +74,9 @@ class Canva: # Objet
         else:
             self.height = display_height
             self.width  = display_width
-        self.canva_image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
+        self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.modules_list = []
-        self.draw = ImageDraw.Draw(self.canva_image)
+        self.draw = ImageDraw.Draw(self.image)
      
     def add_module(self, module):
         self.modules_list.append(module)
@@ -87,7 +86,7 @@ class Canva: # Objet
         
     def update(self):
         self.new_image = Image.new('1', (self.height, self.width), 255)
-        self.draw = ImageDraw.Draw(self.canva_image)
+        self.draw = ImageDraw.Draw(self.image)
         for module in self.modules_list:
             pass #Draw module
     
