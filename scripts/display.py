@@ -40,7 +40,7 @@ class Display:
         
     def canva1(self):
         #self.canva.draw_rect()
-        canva1 = Canva(fontdir, self.width,self.height)
+        canva1 = Canva(self.fontdir, self.width,self.height)
         
         
         canva1.draw_objects()
