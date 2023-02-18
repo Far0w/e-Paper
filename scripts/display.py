@@ -32,7 +32,7 @@ class Display:
         #draw.arc((70, 90, 120, 140), 0, 360, fill = 0)
         draw.rectangle((10, 150, 60, 200), fill = 0)
         draw.chord((70, 150, 120, 200), 0, 360, fill = 0)
-        self.update_display(Limage)
+        self.update_display(self.Limage)
         time.sleep(2)
     
     def update_display(self, img):
