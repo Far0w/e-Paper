@@ -8,7 +8,7 @@ class Display:
         self.width  = epd.width
     
     def display(self, img):
-        epd.display(epd.getbuffer(img))
+        self.epd.display(self.epd.getbuffer(img))
     
     def clear(self):
         logging.info("Clear...")
