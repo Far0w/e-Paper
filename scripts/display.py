@@ -16,7 +16,7 @@ class Display:
         self.width  = epd.width
         self.frames = []
         
-        self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
+        self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 50)
         self.text_font = ImageFont.truetype(os.path.join(self.fontdir, 'Font0.ttc'), 18)
     
     def test(self):
@@ -43,8 +43,8 @@ class Display:
         #self.canva.draw_rect()
         canva1 = Canva(self.width,self.height)
         
-        canva1.add_object(Rectangle(15,15,100,100))
-        canva1.add_object(Text(self.title_font, 10, 10, 'Title test'))
+        canva1.add_object(Rectangle(0,0,72,419))
+        canva1.add_object(Text(self.title_font, 36, 240, 'SAMEDI 18 FEVRIER', 0, "center"))
         
         canva1.draw_objects()
         self.draw_canva(canva1)
