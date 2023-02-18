@@ -69,7 +69,7 @@ class Canva: # Object to draw on
             self.height = display_width
             self.width  = display_height
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
-        self.objects = [Rectangle(100,100,100,100)]
+        self.objects = [Rectangle(15,15,100,100)]
         self.fontdir = fontdir
         self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         
@@ -80,7 +80,7 @@ class Canva: # Object to draw on
         self.image = Image.new('1', (self.height, self.width), 255) # clearing canva
         self.draw = ImageDraw.Draw(self.image)
         self.draw.text((2, 5), 'Title test', font = self.title_font, fill = 0)
-        self.draw.rectangle((100, 200, 100, 200), outline = 0)
+        self.draw.rectangle((100, 150, 100, 150), outline = 0)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
