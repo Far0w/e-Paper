@@ -6,7 +6,6 @@ class Display:
         self.epd = epd
         self.height = epd.height
         self.width  = epd.width
-        self.events_spreadsheet_URL = events_spreadsheet_URL
     
     def display(self, img):
         epd.display(epd.getbuffer(img))
