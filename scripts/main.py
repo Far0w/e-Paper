@@ -34,7 +34,7 @@ def canva(epd):
     canva1.add_object(Text(title_font, 36, 5, 'SAMEDI 18 FEVRIER', 0, "center"))
     for i_event in range(len(calendar_events)):
         date_str = str(calendar_events[i_event][0].day) + " " + months[calendar_events[i_event][0].month-1] + " | " + str(calendar_events[i_event][0].hour) + ":" + str(calendar_events[i_event][0].minute)
-        canva1.add_object(Text(text_font, 36, 30+18*i_event, date_str + event[1], 0, "center"))
+        canva1.add_object(Text(text_font, 36, 30+18*i_event, date_str + calendar_events[i_event][1], 0, "center"))
 
     canva1.draw_objects()
     return canva1
