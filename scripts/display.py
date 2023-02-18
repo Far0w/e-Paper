@@ -4,16 +4,19 @@ import os
 
 class Display:
     
-    def __init__(self, epd):
+    def __init__(self, epd, picdir, libdir, fontdir):
         self.epd = epd
+        self.picdir = picdir
+        self.libdir = libdir
+        self.fontdir = fontdir
         self.height = epd.height
         self.width  = epd.width
         self.frames = []
         self.canva = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         
     def test(self):
-        self.title_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 40)
-        self.text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttc'), 18)
+        self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
+        self.text_font = ImageFont.truetype(os.path.join(self.fontdir, 'Font0.ttc'), 18)
         
         logging.info("2.Drawing on the Vertical image...")
         self.Limage = Image.new('1', (self.height, self.width), 255)  # 255: clear frame
@@ -45,13 +48,13 @@ class Display:
         self.epd.sleep()
         
     #logging.info("3.read bmp file")
-    #Himage = Image.open(os.path.join(picdir, '7in5_V2.bmp'))
+    #Himage = Image.open(os.path.join(self.picdir, '7in5_V2.bmp'))
     #epd.display(epd.getbuffer(Himage))
     #time.sleep(2)
 
     #logging.info("4.read bmp file on window")
     #Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-    #bmp = Image.open(os.path.join(picdir, '100x100.bmp'))
+    #bmp = Image.open(os.path.join(self.picdir, '100x100.bmp'))
     #Himage2.paste(bmp, (50,10))
     #epd.display(epd.getbuffer(Himage2))
     #time.sleep(2)

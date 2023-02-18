@@ -30,9 +30,6 @@ try:
     
     display.clear()
 
-    title_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 40)
-    text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttc'), 18)
-
     display.test()
 
     display.sleep()
