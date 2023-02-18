@@ -13,8 +13,8 @@ class Display:
         self.height = epd.height
         self.width  = epd.width
         self.frames = []
-        self.canva = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
-        
+        self.canva = Canva(self.width,self.height)
+    
     def test(self):
         self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         self.text_font = ImageFont.truetype(os.path.join(self.fontdir, 'Font0.ttc'), 18)
@@ -33,11 +33,17 @@ class Display:
         #draw.arc((70, 90, 120, 140), 0, 360, fill = 0)
         draw.rectangle((10, 150, 60, 200), fill = 0)
         draw.chord((70, 150, 120, 200), 0, 360, fill = 0)
-        self.update_display(self.Limage)
+        self._update_display(self.Limage)
         time.sleep(2)
+        
+    def canva1(self):
+        self.canva.draw_rect()
+        
+        self._update_display()
     
-    def update_display(self, img):
-        self.epd.display(self.epd.getbuffer(img))
+    def _update_display(self, img):
+        canva.update()
+        self.epd.display(self.epd.getbuffer(canva.canva_image))
     
     def clear(self):
         logging.info("Clear...")
@@ -60,7 +66,30 @@ class Display:
     #epd.display(epd.getbuffer(Himage2))
     #time.sleep(2)
     
-class Frame:
+    
+class Canva: # Objet
+    def __init__(self, display_width = 100, display_height = 100, vertical_mode=True):
+        if vertical_mode:
+            self.height = display_width
+            self.width  = display_height
+        else:
+            self.height = display_height
+            self.width  = display_width
+        self.canva_image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
+        self.modules_list = []
+     
+    def add_module(self, module):
+        self.modules_list.append(module)
+        
+    def draw_rect(self):
+        draw.rectangle((10, 150, 60, 200), fill = 0)
+        
+    def update(self):
+        self.new_image = Image.new('1', (self.height, self.width), 255)
+        for module in self.modules_list:
+            pass #Draw module
+    
+class Module:
     
     def __init__(self, width = 10, height = 10, posX = 0, posY = 0):
         self.height = height
