@@ -15,11 +15,12 @@ class Display:
         self.height = epd.height
         self.width  = epd.width
         self.frames = []
-        #self.canva = Canva(self.width,self.height)
-    
-    def test(self):
+        
         self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         self.text_font = ImageFont.truetype(os.path.join(self.fontdir, 'Font0.ttc'), 18)
+    
+    def test(self):
+
         
         logging.info("2.Drawing on the Vertical image...")
         self.Limage = Image.new('1', (self.height, self.width), 255)  # 255: clear frame
