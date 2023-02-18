@@ -77,7 +77,7 @@ class Canva: # Object to draw on
         
     def draw_objects(self):
         self.new_image = Image.new('1', (self.height, self.width), 255) # clearing canva
-        self.draw = ImageDraw.Draw(self.image)
+        self.draw = ImageDraw.Draw(self.new_image)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle...")
