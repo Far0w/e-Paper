@@ -26,7 +26,7 @@ calendar_events = data_collector.download_events()
 
 try:
     epd = epd7in5_V2.EPD()
-    display = Display(epd)
+    display = Display(epd, picdir, libdir, fontdir)
     
     display.clear()
 
