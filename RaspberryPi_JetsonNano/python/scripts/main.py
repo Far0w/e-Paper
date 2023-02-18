@@ -25,7 +25,7 @@ try:
     epd.Clear()
 
     title_font = ImageFont.truetype(os.path.join(fontdir, 'Corona.ttf'), 30)
-    text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttf'), 18)
+    text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttc'), 18)
 
 
     # Drawing on the Vertical image
