@@ -41,7 +41,7 @@ class Display:
     def canva1(self):
         #self.canva.draw_rect()
         canva1 = Canva(self.fontdir, self.width,self.height)
-        
+        canva1.add_object(Rectangle(15,15,100,100))
         
         canva1.draw_objects()
         self.draw_canva(canva1)
@@ -60,7 +60,7 @@ class Display:
         self.epd.sleep()
     
     
-class Canva: # Object to draw on
+class Canva: # Object to draw on that will return an image to display
     def __init__(self, fontdir, display_width = 100, display_height = 100, vertical_mode=True):
         if vertical_mode:
             self.height = display_height
@@ -69,7 +69,7 @@ class Canva: # Object to draw on
             self.height = display_width
             self.width  = display_height
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
-        self.objects = [Rectangle(15,15,100,100)]
+        self.objects = []
         self.fontdir = fontdir
         self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         
@@ -79,11 +79,9 @@ class Canva: # Object to draw on
     def draw_objects(self):
         self.image = Image.new('1', (self.height, self.width), 255) # clearing canva
         self.draw = ImageDraw.Draw(self.image)
-        self.draw.text((2, 5), 'Title test', font = self.title_font, fill = 0)
-        self.draw.rectangle((10, 150, 60, 200), outline = 0)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
-                logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
+                logging.info("Drawing a rectangle at...")
                 self.draw.rectangle((obj.posX, obj.posY, obj.posX+obj.width, obj.posY+obj.height), fill = 0)
         logging.info("Drawing ended.")
 
