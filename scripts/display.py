@@ -63,11 +63,11 @@ class Display:
 class Canva: # Object to draw on
     def __init__(self, fontdir, display_width = 100, display_height = 100, vertical_mode=True):
         if vertical_mode:
-            self.height = display_width
-            self.width  = display_height
-        else:
             self.height = display_height
             self.width  = display_width
+        else:
+            self.height = display_width
+            self.width  = display_height
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.objects = [Rectangle(100,100,100,100)]
         self.fontdir = fontdir
@@ -83,7 +83,7 @@ class Canva: # Object to draw on
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
-                self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), fill = 0)
+                self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), fill = 255)
         logging.info("Drawing ended.")
 
         
