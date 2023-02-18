@@ -28,7 +28,7 @@ def canva(epd):
     canva1 = Canva(epd.width,epd.height)
 
     canva1.add_object(Rectangle(0,0,479,72))
-    canva1.add_object(Text(self.title_font, 36, 5, 'SAMEDI 18 FEVRIER', 0, "center"))
+    canva1.add_object(Text(title_font, 36, 5, 'SAMEDI 18 FEVRIER', 0, "center"))
 
     canva1.draw_objects()
     return canva1
