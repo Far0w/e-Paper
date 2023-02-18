@@ -84,13 +84,13 @@ class Canva: # Object to draw on
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
-                self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), fill = 0)
+                self.draw.rectangle((obj.posX, obj.posY, obj.posX+obj.width, obj.posY+obj.height), fill = 0)
         logging.info("Drawing ended.")
 
         
         
 class Rectangle:
-    def __init__(self, width = 10, height = 10, posX = 0, posY = 0):
+    def __init__(self, posX = 0, posY = 0, width = 10, height = 10):
         self.width = width
         self.height = height
         self.posX = posX
