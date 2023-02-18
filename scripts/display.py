@@ -44,7 +44,7 @@ class Display:
         canva1 = Canva(self.width,self.height)
         
         canva1.add_object(Rectangle(0,0,479,72))
-        canva1.add_object(Text(self.title_font, 5, 36, 'SAMEDI 18 FEVRIER', 0, "center"))
+        canva1.add_object(Text(self.title_font, 36, 5, 'SAMEDI 18 FEVRIER', 0, "center"))
         
         canva1.draw_objects()
         self.draw_canva(canva1)
@@ -71,6 +71,7 @@ class Canva: # Object to draw on that will return an image to display
         else:
             self.height = display_width
             self.width  = display_height
+        self.vertical_mode = vertical_mode
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.objects = []
         #self.fontdir = fontdir
@@ -85,7 +86,10 @@ class Canva: # Object to draw on that will return an image to display
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle...")
-                self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+                if vertical_mode:
+                    self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+                else:
+                    self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
             elif isinstance(obj, Text):
                 logging.info("Drawing a text...")
                 self.draw.text((obj.X, obj.Y), obj.text, font = obj.font, fill = obj.fill_color, align = obj.align)
