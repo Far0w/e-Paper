@@ -68,7 +68,6 @@ class Canva: # Object to draw on
             self.height = display_height
             self.width  = display_width
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
-        self.modules = []
         self.draw = ImageDraw.Draw(self.image)
         self.objects = [Rectangle(10,10,100,100)]
         
@@ -80,17 +79,10 @@ class Canva: # Object to draw on
         self.draw = ImageDraw.Draw(self.image)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
-                logging.info("Drawing a rectangle...")
+                logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
                 self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), fill = 0)
         logging.info("Drawing ended.")
-        
-    #def draw_modules(self):
-        #self.new_image = Image.new('1', (self.height, self.width), 255)
-        #self.draw = ImageDraw.Draw(self.image)
-        #for module in self.modules_list:
-            #pass #Draw module
-    #def add_module(self, module):
-        #self.modules.append(module)
+
         
         
 class Rectangle:
@@ -100,6 +92,26 @@ class Rectangle:
         self.posX = posX
         self.posY = posY
         
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 class Module: # Module inside canva
     
