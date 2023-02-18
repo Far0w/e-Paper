@@ -85,7 +85,7 @@ class Canva: # Object to draw on that will return an image to display
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle...")
-                self.draw.rectangle((obj.X, obj.Y, obj.pX+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+                self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
             elif isinstance(obj, Text):
                 logging.info("Drawing a text...")
                 self.draw.text((obj.X, obj.Y), obj.text, font = obj.font, fill = obj.fill_color, align = obj.align)
