@@ -69,7 +69,6 @@ class Canva: # Object to draw on
             self.height = display_height
             self.width  = display_width
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
-        self.draw = ImageDraw.Draw(self.image)
         self.objects = [Rectangle(100,100,100,100)]
         
     def add_object(self, object):
@@ -78,6 +77,7 @@ class Canva: # Object to draw on
     def draw_objects(self):
         self.image = Image.new('1', (self.height, self.width), 0) # clearing canva
         self.draw = ImageDraw.Draw(self.image)
+        self.draw.text((2, 5), 'Title test', font = self.title_font, fill = 0)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
