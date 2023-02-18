@@ -69,7 +69,7 @@ class Canva: # Object to draw on
             self.width  = display_width
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.draw = ImageDraw.Draw(self.image)
-        self.objects = [Rectangle(10,10,100,100)]
+        self.objects = [Rectangle(100,100,100,100)]
         
     def add_object(self, object):
         self.object.append(module)
