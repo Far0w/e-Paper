@@ -41,7 +41,9 @@ class Display:
     def canva1(self):
         #self.canva.draw_rect()
         canva1 = Canva(self.fontdir, self.width,self.height)
+        
         canva1.add_object(Rectangle(15,15,100,100))
+        canva1.add_object(Text(self.title_font, 10, 10, 'Title test'))
         
         canva1.draw_objects()
         self.draw_canva(canva1)
@@ -61,7 +63,7 @@ class Display:
     
     
 class Canva: # Object to draw on that will return an image to display
-    def __init__(self, fontdir, display_width = 100, display_height = 100, vertical_mode=True):
+    def __init__(self, display_width = 100, display_height = 100, vertical_mode=True):
         if vertical_mode:
             self.height = display_height
             self.width  = display_width
@@ -70,8 +72,8 @@ class Canva: # Object to draw on that will return an image to display
             self.width  = display_height
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.objects = []
-        self.fontdir = fontdir
-        self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
+        #self.fontdir = fontdir
+        #self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         
     def add_object(self, obj):
         self.objects.append(obj)
@@ -81,20 +83,34 @@ class Canva: # Object to draw on that will return an image to display
         self.draw = ImageDraw.Draw(self.image)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
-                logging.info("Drawing a rectangle at...")
-                self.draw.rectangle((obj.posX, obj.posY, obj.posX+obj.width, obj.posY+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+                logging.info("Drawing a rectangle...")
+                self.draw.rectangle((obj.X, obj.Y, obj.pX+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+            elif isinstance(obj, Text):
+                logging.info("Drawing a text...")
+                self.draw.text((obj.X, obj.Y), obj.text, font = obj.font, fill = obj.fill_color, align = obj.align)
         logging.info("Drawing ended.")
 
         
 class Rectangle:
-    def __init__(self, posX = 0, posY = 0, width = 10, height = 10, fill_color = 255, outline_color = 0, linewidth = 2):
+    def __init__(self, X = 0, Y = 0, width = 10, height = 10, fill_color = 255, outline_color = 0, linewidth = 2):
         self.width = width
         self.height = height
-        self.posX = posX
-        self.posY = posY
+        self.X = X
+        self.Y = Y
         self.fill_color = fill_color
         self.outline_color = outline_color
         self.linewidth = linewidth
+        
+class Text:
+    def __init__(self, font, X = 0, Y = 0, text = "", fill_color = 0, align= "left"):
+        self.X = X
+        self.Y = Y
+        self.font = font
+        self.text = text
+        self.fill_color = fill_color
+        self.align = align
+
+#ImageDraw.text(xy, text, fill=None, font=None, anchor=None, spacing=4, align='left', direction=None, features=None, language=None, stroke_width=0, stroke_fill=None, embedded_color=False)
         
     
     
