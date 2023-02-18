@@ -5,6 +5,7 @@ import os
 import pandas as pd
 from dateutil import parser
 from data_collection import dataCollector
+from display import Display
 import logging
 from waveshare_epd import epd7in5_V2
 import time
@@ -24,9 +25,7 @@ calendar_events = data_collector.download_events()
 
 
 try:
-    logging.info("epd7in5_V2 Demo")
     epd = epd7in5_V2.EPD()
-    
     display = Display(epd)
     
     display.clear()
