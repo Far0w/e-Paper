@@ -45,6 +45,7 @@ class Display:
         
         canva1.draw_objects()
         self.draw_canva(canva1)
+        time.sleep(2)
     
     def draw_canva(self, canva):
         self.epd.display(self.epd.getbuffer(canva.image))
@@ -75,7 +76,7 @@ class Canva: # Object to draw on
         self.object.append(module)
         
     def draw_objects(self):
-        self.image = Image.new('1', (self.height, self.width), 255) # clearing canva
+        self.image = Image.new('1', (self.height, self.width), 0) # clearing canva
         self.draw = ImageDraw.Draw(self.image)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
