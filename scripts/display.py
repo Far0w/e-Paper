@@ -73,8 +73,8 @@ class Canva: # Object to draw on that will return an image to display
         self.fontdir = fontdir
         self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         
-    def add_object(self, object):
-        self.objects.append(module)
+    def add_object(self, obj):
+        self.objects.append(obj)
         
     def draw_objects(self):
         self.image = Image.new('1', (self.height, self.width), 255) # clearing canva
