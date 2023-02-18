@@ -22,10 +22,10 @@ logging.basicConfig(level=logging.DEBUG)
 data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
 calendar_events = data_collector.download_events()
 
-def canva():
-    title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 50)
-    text_font = ImageFont.truetype(os.path.join(self.fontdir, 'Font0.ttc'), 18)
-    canva1 = Canva(self.width,self.height)
+def canva(epd):
+    title_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 50)
+    text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttc'), 18)
+    canva1 = Canva(epd.width,epd.height)
 
     canva1.add_object(Rectangle(0,0,479,72))
     canva1.add_object(Text(self.title_font, 36, 5, 'SAMEDI 18 FEVRIER', 0, "center"))
@@ -42,7 +42,7 @@ try:
     display.clear()
 
     #display.canva1()
-    display.draw_canva(canva())
+    display.draw_canva(canva(epd))
     time.sleep(2)
         
 
