@@ -82,17 +82,19 @@ class Canva: # Object to draw on that will return an image to display
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at...")
-                self.draw.rectangle((obj.posX, obj.posY, obj.posX+obj.width, obj.posY+obj.height), fill = 0)
+                self.draw.rectangle((obj.posX, obj.posY, obj.posX+obj.width, obj.posY+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
         logging.info("Drawing ended.")
 
         
-        
 class Rectangle:
-    def __init__(self, posX = 0, posY = 0, width = 10, height = 10):
+    def __init__(self, posX = 0, posY = 0, width = 10, height = 10, fill_color = 255, outline_color = 0, linewidth = 2):
         self.width = width
         self.height = height
         self.posX = posX
         self.posY = posY
+        self.fill_color = fill_color
+        self.outline_color = outline_color
+        self.linewidth = linewidth
         
     
     
