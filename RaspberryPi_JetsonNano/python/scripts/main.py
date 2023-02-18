@@ -4,6 +4,7 @@ import sys
 import os
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
@@ -23,17 +24,17 @@ try:
     epd.init()
     epd.Clear()
 
-    font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-    font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
+    title_font = ImageFont.truetype(os.path.join(fontdir, 'Corona.ttf'), 30)
+    text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttf'), 18)
 
 
     # Drawing on the Vertical image
     logging.info("2.Drawing on the Vertical image...")
     Limage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Limage)
-    draw.text((2, 0), 'Test 1', font = font18, fill = 0)
-    draw.text((2, 20), 'Ecran 7.5 pouces', font = font18, fill = 0)
-    draw.text((20, 50), 'Test 2', font = font18, fill = 0)
+    draw.text((2, 0), 'Title test', font = title_font, fill = 0)
+    draw.text((2, 30), 'Ecran 7.5 pouces', font = text_font, fill = 0)
+    draw.text((2, 60), 'Test 2', font = text_font, fill = 0)
     draw.line((10, 90, 60, 140), fill = 0)
     draw.line((60, 90, 10, 140), fill = 0)
     draw.rectangle((10, 90, 60, 140), outline = 0)
