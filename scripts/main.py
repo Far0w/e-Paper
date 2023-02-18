@@ -8,6 +8,7 @@ from data_collection import dataCollector
 from display import Display, Canva, Text, Rectangle
 import logging
 from waveshare_epd import epd7in5_V2
+from PIL import Image,ImageDraw,ImageFont
 import traceback
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
