@@ -40,7 +40,7 @@ class Display:
         
     def canva1(self):
         #self.canva.draw_rect()
-        canva1 = Canva(self.width,self.height, fontdir)
+        canva1 = Canva(self.width,self.height, True, fontdir)
         
         
         canva1.draw_objects()
@@ -61,7 +61,7 @@ class Display:
     
     
 class Canva: # Object to draw on
-    def __init__(self, display_width = 100, display_height = 100, fontdir, vertical_mode=True):
+    def __init__(self, display_width = 100, display_height = 100, vertical_mode=True, fontdir):
         if vertical_mode:
             self.height = display_width
             self.width  = display_height
