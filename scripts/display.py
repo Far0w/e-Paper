@@ -86,7 +86,7 @@ class Canva: # Object to draw on that will return an image to display
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle...")
-                if vertical_mode:
+                if self.vertical_mode:
                     self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
                 else:
                     self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
