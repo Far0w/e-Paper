@@ -20,7 +20,7 @@ import traceback
 
 logging.basicConfig(level=logging.DEBUG)
 
-data_collector = dataCollector()
+data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
 calendar_events = data_collector.downloadEvents()
 
 print(calendar_events)

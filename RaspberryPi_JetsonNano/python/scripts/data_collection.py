@@ -3,8 +3,8 @@ from dateutil import parser
 
 class dataCollector:
     
-    def __init__(self, eventsSpreadsheetURL:str):
-        self.events_spreadsheet_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv'
+    def __init__(self, events_spreadsheet_URL:str):
+        self.events_spreadsheet_URL = events_spreadsheet_URL
         
     def download_events(self):
         colnames = ['date','event']
