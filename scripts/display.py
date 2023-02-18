@@ -41,7 +41,7 @@ class Display:
         self._update_display(self.canva.image)
     
     def _update_display(self, img):
-        canva.update()
+        #self.canva.update()
         self.epd.display(self.epd.getbuffer(canva.image))
     
     def clear(self):
@@ -84,7 +84,7 @@ class Canva: # Objet
     def draw_rect(self):
         self.draw.rectangle((10, 150, 60, 200), fill = 0)
         
-    def update(self):
+    def draw_modules(self):
         self.new_image = Image.new('1', (self.height, self.width), 255)
         self.draw = ImageDraw.Draw(self.image)
         for module in self.modules_list:
