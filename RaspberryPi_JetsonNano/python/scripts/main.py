@@ -2,6 +2,10 @@
 # -*- coding:utf-8 -*-
 import sys
 import os
+import pandas as pd
+from dateutil import parser
+from data_collection import dataCollector
+
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
@@ -15,6 +19,12 @@ from PIL import Image,ImageDraw,ImageFont
 import traceback
 
 logging.basicConfig(level=logging.DEBUG)
+
+data_collector = dataCollector()
+calendar_events = data_collector.downloadEvents()
+
+print(calendar_events)
+
 
 try:
     logging.info("epd7in5_V2 Demo")
