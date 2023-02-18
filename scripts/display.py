@@ -77,15 +77,17 @@ class Canva: # Objet
             self.width  = display_width
         self.canva_image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.modules_list = []
+        self.draw = ImageDraw.Draw(self.canva_image)
      
     def add_module(self, module):
         self.modules_list.append(module)
         
     def draw_rect(self):
-        draw.rectangle((10, 150, 60, 200), fill = 0)
+        self.draw.rectangle((10, 150, 60, 200), fill = 0)
         
     def update(self):
         self.new_image = Image.new('1', (self.height, self.width), 255)
+        self.draw = ImageDraw.Draw(self.canva_image)
         for module in self.modules_list:
             pass #Draw module
     
