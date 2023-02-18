@@ -1,6 +1,7 @@
 import logging
 from PIL import Image,ImageDraw,ImageFont
 import os
+import time
 
 class Display:
     
