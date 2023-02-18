@@ -80,11 +80,11 @@ class Canva: # Object to draw on
         self.image = Image.new('1', (self.height, self.width), 255) # clearing canva
         self.draw = ImageDraw.Draw(self.image)
         self.draw.text((2, 5), 'Title test', font = self.title_font, fill = 0)
-        self.draw.rectangle((10, 90, 60, 140), outline = 0)
+        self.draw.rectangle((100, 200, 100, 200), outline = 0)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
-                self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), fill = 255)
+                self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), fill = 0)
         logging.info("Drawing ended.")
 
         
