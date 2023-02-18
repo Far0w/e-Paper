@@ -1,22 +1,6 @@
-﻿# e-Paper  
-waveshare electronics
-![waveshare_logo.png](waveshare_logo.png)
-
-## 中文:  
-Jetson Nano、Raspberry Pi、Arduino、STM32例程
-* RaspberryPi_JetsonNano  
-    > C
-    > Python 
-* Arduino:  
-    > Arduino UNO  
-* STM32:  
-    > STM32F103ZET6 
-    
-更多资料请在官网上搜索:  
-http://www.waveshare.net
+﻿# Modified version of Waveshare e-Paper  
 
 
-## English:  
 Jetson Nano、Raspberry Pi、Arduino、STM32 Demo:  
 * RaspberryPi_JetsonNano:  
     > C
