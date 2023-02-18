@@ -77,9 +77,10 @@ class Canva: # Object to draw on
         self.object.append(module)
         
     def draw_objects(self):
-        self.image = Image.new('1', (self.height, self.width), 0) # clearing canva
+        self.image = Image.new('1', (self.height, self.width), 255) # clearing canva
         self.draw = ImageDraw.Draw(self.image)
-        self.draw.text((2, 5), 'Title test', font = self.title_font, fill = 255)
+        self.draw.text((2, 5), 'Title test', font = self.title_font, fill = 0)
+        self.draw.rectangle((10, 90, 60, 140), outline = 0)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle at {}x{}x{}x{}...".format(obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height))
