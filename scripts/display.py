@@ -40,7 +40,7 @@ class Display:
         
     def canva1(self):
         #self.canva.draw_rect()
-        canva1 = Canva(self.fontdir, self.width,self.height)
+        canva1 = Canva(self.width,self.height)
         
         canva1.add_object(Rectangle(15,15,100,100))
         canva1.add_object(Text(self.title_font, 10, 10, 'Title test'))
