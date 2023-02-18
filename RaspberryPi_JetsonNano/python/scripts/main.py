@@ -24,7 +24,7 @@ try:
     epd.init()
     epd.Clear()
 
-    title_font = ImageFont.truetype(os.path.join(fontdir, 'Corona.ttf'), 30)
+    title_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 40)
     text_font = ImageFont.truetype(os.path.join(fontdir, 'Font0.ttc'), 18)
 
 
@@ -32,15 +32,15 @@ try:
     logging.info("2.Drawing on the Vertical image...")
     Limage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Limage)
-    draw.text((2, 0), 'Title test', font = title_font, fill = 0)
-    draw.text((2, 30), 'Ecran 7.5 pouces', font = text_font, fill = 0)
-    draw.text((2, 60), 'Test 2', font = text_font, fill = 0)
-    draw.line((10, 90, 60, 140), fill = 0)
-    draw.line((60, 90, 10, 140), fill = 0)
-    draw.rectangle((10, 90, 60, 140), outline = 0)
-    draw.line((95, 90, 95, 140), fill = 0)
-    draw.line((70, 115, 120, 115), fill = 0)
-    draw.arc((70, 90, 120, 140), 0, 360, fill = 0)
+    draw.text((2, 20), 'Title test', font = title_font, fill = 0)
+    draw.text((2, 50), 'Ecran 7.5 pouces', font = text_font, fill = 0)
+    draw.text((2, 80), 'Test 2', font = text_font, fill = 0)
+    #draw.line((10, 90, 60, 140), fill = 0)
+    #draw.line((60, 90, 10, 140), fill = 0)
+    #draw.rectangle((10, 90, 60, 140), outline = 0)
+    #draw.line((95, 90, 95, 140), fill = 0)
+    #draw.line((70, 115, 120, 115), fill = 0)
+    #draw.arc((70, 90, 120, 140), 0, 360, fill = 0)
     draw.rectangle((10, 150, 60, 200), fill = 0)
     draw.chord((70, 150, 120, 200), 0, 360, fill = 0)
     epd.display(epd.getbuffer(Limage))
