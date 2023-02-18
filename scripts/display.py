@@ -35,7 +35,7 @@ class Display:
         #draw.arc((70, 90, 120, 140), 0, 360, fill = 0)
         draw.rectangle((10, 150, 60, 200), fill = 0)
         draw.chord((70, 150, 120, 200), 0, 360, fill = 0)
-        self._update_display(self.Limage)
+        #self._update_display(self.Limage)
         time.sleep(2)
         
     def canva1(self):
@@ -47,7 +47,6 @@ class Display:
         self.draw_canva(canva1)
     
     def draw_canva(self, canva):
-        #self.canva.update()
         self.epd.display(self.epd.getbuffer(canva.image))
     
     def clear(self):
@@ -78,9 +77,12 @@ class Canva: # Object to draw on
         
     def draw_objects(self):
         self.new_image = Image.new('1', (self.height, self.width), 255) # clearing canva
+        self.draw = ImageDraw.Draw(self.image)
         for obj in self.objects:
             if isinstance(obj, Rectangle):
+                logging.info("Drawing a rectangle...")
                 self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), outline = 0)
+        logging.info("Drawing ended.")
         
     #def draw_modules(self):
         #self.new_image = Image.new('1', (self.height, self.width), 255)
