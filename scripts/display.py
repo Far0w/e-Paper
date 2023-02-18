@@ -3,6 +3,8 @@ from PIL import Image,ImageDraw,ImageFont
 import os
 import time
 
+# Display is a technical object to update the display, make it slept, clear it
+
 class Display:
     
     def __init__(self, epd, picdir, libdir, fontdir):
@@ -13,7 +15,7 @@ class Display:
         self.height = epd.height
         self.width  = epd.width
         self.frames = []
-        self.canva = Canva(self.width,self.height)
+        #self.canva = Canva(self.width,self.height)
     
     def test(self):
         self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
@@ -37,12 +39,16 @@ class Display:
         time.sleep(2)
         
     def canva1(self):
-        self.canva.draw_rect()
-        self._update_display(self.canva.image)
+        #self.canva.draw_rect()
+        canva1 = Canva(self.width,self.height)
+        
+        
+        canva1.draw_objects()
+        self.draw_canva(canva1)
     
-    def _update_display(self, img):
+    def draw_canva(self, canva):
         #self.canva.update()
-        self.epd.display(self.epd.getbuffer(self.canva.image))
+        self.epd.display(self.epd.getbuffer(canva.image))
     
     def clear(self):
         logging.info("Clear...")
@@ -52,7 +58,63 @@ class Display:
     def sleep(self):
         logging.info("Goto Sleep...")
         self.epd.sleep()
+    
+    
+class Canva: # Object to draw on
+    def __init__(self, display_width = 100, display_height = 100, vertical_mode=True):
+        if vertical_mode:
+            self.height = display_width
+            self.width  = display_height
+        else:
+            self.height = display_height
+            self.width  = display_width
+        self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
+        self.modules = []
+        self.draw = ImageDraw.Draw(self.image)
+        self.objects = [Rectangle(10,10,10,10)]
         
+    def add_object(self, object):
+        self.object.append(module)
+        
+    def draw_objects(self):
+        self.new_image = Image.new('1', (self.height, self.width), 255) # clearing canva
+        for obj in self.objects:
+            if isinstance(obj, Rectangle):
+                self.draw.rectangle((obj.posX, obj.posX+obj.width, obj.posY, obj.posY+obj.height), outline = 0)
+        
+    #def draw_modules(self):
+        #self.new_image = Image.new('1', (self.height, self.width), 255)
+        #self.draw = ImageDraw.Draw(self.image)
+        #for module in self.modules_list:
+            #pass #Draw module
+    #def add_module(self, module):
+        #self.modules.append(module)
+        
+        
+class Rectangle:
+    def __init__(self, width = 10, height = 10, posX = 0, posY = 0):
+        self.width = width
+        self.height = height
+        self.posX = posX
+        self.posY = posY
+        
+    
+class Module: # Module inside canva
+    
+    def __init__(self, width = 10, height = 10, posX = 0, posY = 0):
+        self.height = height
+        self.width  = width
+        self.posX = posX
+        self.posY = posY
+        
+       
+    
+    
+    
+    
+    
+    
+    
     #logging.info("3.read bmp file")
     #Himage = Image.open(os.path.join(self.picdir, '7in5_V2.bmp'))
     #epd.display(epd.getbuffer(Himage))
@@ -64,38 +126,5 @@ class Display:
     #Himage2.paste(bmp, (50,10))
     #epd.display(epd.getbuffer(Himage2))
     #time.sleep(2)
-    
-    
-class Canva: # Objet
-    def __init__(self, display_width = 100, display_height = 100, vertical_mode=True):
-        if vertical_mode:
-            self.height = display_width
-            self.width  = display_height
-        else:
-            self.height = display_height
-            self.width  = display_width
-        self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
-        self.modules_list = []
-        self.draw = ImageDraw.Draw(self.image)
-     
-    def add_module(self, module):
-        self.modules_list.append(module)
-        
-    def draw_rect(self):
-        self.draw.rectangle((10, 150, 60, 200), fill = 0)
-        
-    def draw_modules(self):
-        self.new_image = Image.new('1', (self.height, self.width), 255)
-        self.draw = ImageDraw.Draw(self.image)
-        for module in self.modules_list:
-            pass #Draw module
-    
-class Module:
-    
-    def __init__(self, width = 10, height = 10, posX = 0, posY = 0):
-        self.height = height
-        self.width  = width
-        self.posX = posX
-        self.posY = posY
         
        
