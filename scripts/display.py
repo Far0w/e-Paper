@@ -43,8 +43,8 @@ class Display:
         #self.canva.draw_rect()
         canva1 = Canva(self.width,self.height)
         
-        canva1.add_object(Rectangle(0,0,419,72))
-        canva1.add_object(Text(self.title_font, 36, 36, 'SAMEDI 18 FEVRIER', 0, "center"))
+        canva1.add_object(Rectangle(0,0,479,72))
+        canva1.add_object(Text(self.title_font, 5, 36, 'SAMEDI 18 FEVRIER', 0, "center"))
         
         canva1.draw_objects()
         self.draw_canva(canva1)
