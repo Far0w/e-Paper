@@ -30,6 +30,8 @@ text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+refresh_time = 0.5 # time in minutes to refresh the screen
+
 def signal_handler(signal, frame): # To cut the infinite loop
     global interrupted
     interrupted = True
@@ -82,7 +84,7 @@ while True:
 
         display.sleep()
         
-        time.sleep(10)
+        time.sleep(int(refresh_time*60))
         if interrupted:
             print("Cutting the loop...")
             display.sleep()
