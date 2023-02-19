@@ -90,22 +90,14 @@ try:
         display.draw_canva(canva(epd))
 
         display.sleep()
-        
-        if interrupted:
-            print("Cutting the loop...")
-            display.sleep()
-            epd7in5_V2.epdconfig.module_exit()
-            exit()
-            break
             
-        for i in range(int(refresh_time*60)):#yuck...
-            time.sleep(1)
+        for i in range(int(refresh_time*60)):#yuck... 
             if interrupted:
                 print("Cutting the loop...")
-                display.sleep()
                 epd7in5_V2.epdconfig.module_exit()
                 exit()
                 break
+            time.sleep(1)
 
 except IOError as e:
     logging.info(e)
