@@ -53,7 +53,7 @@ def display_calendar_event(canva):
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
         
 def display_weather_data(canva):
-    canva.add_object(Text(title_font, 20, 50, weatherAPI.current_temperature, 0, "center"))
+    canva.add_object(Text(title_font, 20, 100, "{}°C"weatherAPI.current_temperature, 0, "center"))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
@@ -93,6 +93,8 @@ while True:
         if interrupted:
             print("Cutting the loop...")
             display.sleep()
+            epd7in5_V2.epdconfig.module_exit()
+            exit()
             break
 
     except IOError as e:
