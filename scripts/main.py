@@ -26,6 +26,15 @@ calendar_events = data_collector.download_events()
 
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+def addCalendarEvent(canva):
+    X = 15
+    Y = 600
+    textSpacing = 20
+    weekSpacing = 8
+    for i_event in range(len(calendar_events)):
+        date_str = str(calendar_events[i_event][0].day) + " " + months[calendar_events[i_event][0].month-1] + " - " + str(calendar_events[i_event][0].hour) + ":" + ("0" + str(calendar_events[i_event][0].minute))[-2:]
+        canva.add_object(Text(text_font, X, Y+textSpacing*i_event, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
+
 def canva(epd):
     title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
     text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
@@ -34,9 +43,8 @@ def canva(epd):
     canva1.add_object(Rectangle(0,0,479,72))
     todayDate = date.today().strftime("%A %d %B")
     canva1.add_object(Text(title_font, 20, 5, todayDate, 0, "center"))
-    for i_event in range(len(calendar_events)):
-        date_str = str(calendar_events[i_event][0].day) + " " + months[calendar_events[i_event][0].month-1] + " - " + str(calendar_events[i_event][0].hour) + ":" + ("0" + str(calendar_events[i_event][0].minute))[-2:]
-        canva1.add_object(Text(text_font, 36, 100+20*i_event, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
+    
+    addCalendarEvent(canva1)
     
     canva1.add_object(Rectangle(0,745,479,55,0))
     canva1.add_object(Text(text_font, 5, 780, "Créer, - voilà la grande délivrance de la souffrance. N.", 255, "center"))
