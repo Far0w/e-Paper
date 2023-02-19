@@ -40,8 +40,8 @@ def addCalendarEvent(canva):
         date_str = str(calendar_events[i_event][0].day) + " " + months[calendar_events[i_event][0].month-1] + " - " + str(calendar_events[i_event][0].hour) + ":" + ("0" + str(calendar_events[i_event][0].minute))[-2:]
         if calendar_events[i_event][0].isocalendar().week != lastWeek:
             lastWeek = calendar_events[i_event][0].isocalendar().week
+            canva.add_object(Line([X, Y+text_spacing*i_event+weeks_number*week_spacing, X+100, int(Y+text_spacing*i_event+weeks_number*week_spacing)]))
             weeks_number += 1
-            canva.add_object(Line([X, Y+text_spacing*i_event+weeks_number*week_spacing-week_spacing*0.5, X+100, int(Y+text_spacing*i_event+weeks_number*week_spacing-week_spacing)]))
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
 
 def canva(epd):
