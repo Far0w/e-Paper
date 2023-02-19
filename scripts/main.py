@@ -5,7 +5,7 @@ import os
 import pandas as pd
 from dateutil import parser
 from data_collection import dataCollector
-from display import Display, Canva, Text, Rectangle
+from display import Display, Canva, Text, Rectangle, Line
 import logging
 from waveshare_epd import epd7in5_V2
 from PIL import Image,ImageDraw,ImageFont
@@ -41,6 +41,7 @@ def addCalendarEvent(canva):
         if calendar_events[i_event][0].isocalendar().week != lastWeek:
             lastWeek = calendar_events[i_event][0].isocalendar().week
             weeks_number += 1
+            canva.add_object(Line([X, Y+text_spacing*i_event+weeks_number*week_spacing-week_spacing*0.5, X+100, Y+text_spacing*i_event+weeks_number*week_spacing-week_spacing*0.5]))
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
 
 def canva(epd):
@@ -53,7 +54,7 @@ def canva(epd):
     addCalendarEvent(canva1)
     
     canva1.add_object(Rectangle(0,765,479,35,0))
-    canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{}| {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
+    canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     canva1.draw_objects()
     return canva1
     

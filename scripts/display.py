@@ -93,6 +93,9 @@ class Canva: # Object to draw on that will return an image to display
             elif isinstance(obj, Text):
                 logging.info("Drawing a text...")
                 self.draw.text((obj.X, obj.Y), obj.text, font = obj.font, fill = obj.fill_color, align = obj.align)
+            elif isinstance(obj, Line):
+                logging.info("Drawing a line...")
+                self.draw.text(obj.xy, obj.fill_color, width = obj.width)
         logging.info("Drawing ended.")
 
         
@@ -105,6 +108,12 @@ class Rectangle:
         self.fill_color = fill_color
         self.outline_color = outline_color
         self.linewidth = linewidth
+        
+class Line:
+    def __init__(self, xy = [], fill_color = 0, width = 2):
+        self.xy = xy
+        self.fill_color = fill_color
+        self.width = width
         
 class Text:
     def __init__(self, font, X = 0, Y = 0, text = "", fill_color = 0, align= "left"):
