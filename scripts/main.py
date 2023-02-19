@@ -79,7 +79,6 @@ signal.signal(signal.SIGINT, signal_handler)
 interrupted = False
 
 try:
-    #while True:
     calendar_events = data_collector.download_events()
     weatherAPI.update_data()
 
@@ -92,12 +91,6 @@ try:
 
     display.sleep()
 
-    #for i in range(int(refresh_time*60)):#yuck... 
-        #if interrupted:
-            ##print("Cutting the loop...")
-            #exit()
-            #break
-        #time.sleep(1)
 
 except IOError as e:
     logging.info(e)
