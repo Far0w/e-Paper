@@ -14,6 +14,7 @@ from datetime import datetime as date
 import traceback
 import time
 import signal
+import credentials
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
@@ -30,8 +31,8 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 
 refresh_time = 10 # time in minutes to refresh the screen
 
-data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
-weatherAPI = WeatherAPI()
+data_collector = dataCollector(credentials.calendar_spreadsheet_link)
+weatherAPI = WeatherAPI(credentials.weather_API_key)
 
 def signal_handler(signal, frame): # To cut the infinite loop
     global interrupted

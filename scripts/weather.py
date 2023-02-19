@@ -3,8 +3,8 @@ import requests, json
 
 
 class WeatherAPI():
-    def __init__(self):
-        self.api_key = "264308798c3239b2dc857702b9155206" # to hide after
+    def __init__(self, API_key):
+        self.api_key = API_key # to hide after
         self.base_url = "http://api.openweathermap.org/data/2.5/weather?"
         self.city_name = "Copenhagen"
         self.complete_url = self.base_url + "appid=" + self.api_key + "&q=" + self.city_name
