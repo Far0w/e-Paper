@@ -91,7 +91,8 @@ while True:
 
         display.sleep()
         
-        time.sleep(int(refresh_time*60))
+        for i in range(refresh_time*60):#yuck...
+            time.sleep(1)
         if interrupted:
             print("Cutting the loop...")
             display.sleep()
