@@ -22,15 +22,14 @@ if os.path.exists(libdir):
 
 logging.basicConfig(level=logging.DEBUG)
 
-data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
-calendar_events = data_collector.download_events()
-
 title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
 text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 refresh_time = 0.5 # time in minutes to refresh the screen
+
+data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
 
 def signal_handler(signal, frame): # To cut the infinite loop
     global interrupted
@@ -75,6 +74,8 @@ interrupted = False
     
 while True:
     try:
+        calendar_events = data_collector.download_events()
+
         epd = epd7in5_V2.EPD()
         display = Display(epd, picdir, libdir, fontdir)
 
