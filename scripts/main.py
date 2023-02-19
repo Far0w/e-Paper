@@ -94,7 +94,6 @@ try:
         for i in range(int(refresh_time*60)):#yuck... 
             if interrupted:
                 print("Cutting the loop...")
-                epd7in5_V2.epdconfig.module_exit()
                 exit()
                 break
             time.sleep(1)
