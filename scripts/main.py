@@ -37,7 +37,9 @@ def canva(epd):
     for i_event in range(len(calendar_events)):
         date_str = str(calendar_events[i_event][0].day) + " " + months[calendar_events[i_event][0].month-1] + " - " + str(calendar_events[i_event][0].hour) + ":" + ("0" + str(calendar_events[i_event][0].minute))[-2:]
         canva1.add_object(Text(text_font, 36, 100+20*i_event, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
-
+    
+    canva1.add_object(Rectangle(0,745,479,55,0))
+    canva1.add_object(Text(text_font, 5, 780, "Créer, - voilà la grande délivrance de la souffrance. N.", 255, "center"))
     canva1.draw_objects()
     return canva1
     
