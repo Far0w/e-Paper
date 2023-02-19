@@ -1,2 +1,0 @@
-weather_API_key = "264308798c3239b2dc857702b9155206"
-calendar_spreadsheet_link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv'
