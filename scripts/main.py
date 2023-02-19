@@ -12,6 +12,7 @@ from PIL import Image,ImageDraw,ImageFont
 from datetime import datetime as date
 import traceback
 import time
+import signal
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
@@ -29,6 +30,9 @@ text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+def signal_handler(signal, frame): # To cut the infinite loop
+    global interrupted
+    interrupted = True
 
 def addCalendarEvent(canva):
     X = 15
@@ -63,44 +67,31 @@ def canva(epd):
     return canva1
 
 
-import signal
-
-import time   # For the demo only
-
-def signal_handler(signal, frame):
-    global interrupted
-    interrupted = True
-
 signal.signal(signal.SIGINT, signal_handler)
 
-
 interrupted = False
+    
 while True:
-    print("Working hard...")
-    time.sleep(3)
-    print("All done!")
+    try:
+        epd = epd7in5_V2.EPD()
+        display = Display(epd, picdir, libdir, fontdir)
 
-    if interrupted:
-        print("Gotta go")
-        break
+        display.clear()
 
+        display.draw_canva(canva(epd))
 
-try:
-    epd = epd7in5_V2.EPD()
-    display = Display(epd, picdir, libdir, fontdir)
-    
-    display.clear()
-
-    display.draw_canva(canva(epd))
-    time.sleep(2)
+        display.sleep()
         
+        time.sleep(10)
+        if interrupted:
+            print("Cutting the loop...")
+            display.sleep()
+            break
 
-    display.sleep()
-    
-except IOError as e:
-    logging.info(e)
-    
-except KeyboardInterrupt:    
-    logging.info("ctrl + c:")
-    epd7in5_V2.epdconfig.module_exit()
-    exit()
+    except IOError as e:
+        logging.info(e)
+
+    except KeyboardInterrupt:    
+        logging.info("ctrl + c:")
+        epd7in5_V2.epdconfig.module_exit()
+        exit()
