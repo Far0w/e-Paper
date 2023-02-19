@@ -52,8 +52,8 @@ def canva(epd):
     
     addCalendarEvent(canva1)
     
-    canva1.add_object(Rectangle(0,745,479,55,0))
-    canva1.add_object(Text(text_font, 5, 780, "Créer, - voilà la grande délivrance de la souffrance. N.", 255, "center"))
+    canva1.add_object(Rectangle(0,765,479,35,0))
+    canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{}| {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     canva1.draw_objects()
     return canva1
     
