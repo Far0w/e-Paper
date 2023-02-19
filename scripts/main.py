@@ -31,7 +31,7 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 
 def addCalendarEvent(canva):
     X = 15
-    Y = 600
+    Y = 500
     textSpacing = 20
     weekSpacing = 8
     for i_event in range(len(calendar_events)):
