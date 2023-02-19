@@ -42,7 +42,7 @@ def addCalendarEvent(canva):
             lastWeek = calendar_events[i_event][0].isocalendar().week
             weeks_number += 1
             canva.add_object(Line([X, Y+text_spacing*i_event+weeks_number*week_spacing-week_spacing*0.5, X+100, int(Y+text_spacing*i_event+weeks_number*week_spacing-week_spacing*0.5)]))
-        canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
+        canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
