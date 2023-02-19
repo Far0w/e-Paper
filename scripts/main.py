@@ -29,6 +29,7 @@ text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+
 def addCalendarEvent(canva):
     X = 15
     Y = 500
@@ -43,6 +44,9 @@ def addCalendarEvent(canva):
             canva.add_object(Line([X, Y+text_spacing*i_event+weeks_number*week_spacing, X+100, int(Y+text_spacing*i_event+weeks_number*week_spacing)]))
             weeks_number += 1
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
+        
+def weather():
+    pass
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
@@ -57,14 +61,36 @@ def canva(epd):
     canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     canva1.draw_objects()
     return canva1
-    
+
+
+import signal
+
+import time   # For the demo only
+
+def signal_handler(signal, frame):
+    global interrupted
+    interrupted = True
+
+signal.signal(signal.SIGINT, signal_handler)
+
+
+interrupted = False
+while True:
+    print("Working hard...")
+    time.sleep(3)
+    print("All done!")
+
+    if interrupted:
+        print("Gotta go")
+        break
+
+
 try:
     epd = epd7in5_V2.EPD()
     display = Display(epd, picdir, libdir, fontdir)
     
     display.clear()
 
-    #display.canva1()
     display.draw_canva(canva(epd))
     time.sleep(2)
         
