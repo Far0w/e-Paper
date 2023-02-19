@@ -54,8 +54,8 @@ def display_calendar_event(canva):
         
 def display_weather_data(canva):
     canva.add_object(Text(title_font, 20, 100, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
-    canva.add_object(Text(text_font, 20, 160, "{}hPa".format(weatherAPI.current_temperature), 0, "center"))
-    canva.add_object(Text(text_font, 20, 180, "{}%".format(weatherAPI.current_temperature), 0, "center"))
+    canva.add_object(Text(text_font, 20, 160, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
+    canva.add_object(Text(text_font, 20, 180, "{}%".format(weatherAPI.current_humidity), 0, "center"))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
