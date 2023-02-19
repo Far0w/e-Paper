@@ -76,9 +76,9 @@ def canva(epd):
 signal.signal(signal.SIGINT, signal_handler)
 
 interrupted = False
-    
-while True:
-    try:
+
+try:
+    while True:
         calendar_events = data_collector.download_events()
         weatherAPI.update_data()
 
@@ -91,19 +91,26 @@ while True:
 
         display.sleep()
         
-        for i in range(refresh_time*60):#yuck...
-            time.sleep(1)
         if interrupted:
             print("Cutting the loop...")
             display.sleep()
             epd7in5_V2.epdconfig.module_exit()
             exit()
             break
+            
+        for i in range(int(refresh_time*60)):#yuck...
+            time.sleep(1)
+            if interrupted:
+                print("Cutting the loop...")
+                display.sleep()
+                epd7in5_V2.epdconfig.module_exit()
+                exit()
+                break
 
-    except IOError as e:
-        logging.info(e)
+except IOError as e:
+    logging.info(e)
 
-    except KeyboardInterrupt:    
-        logging.info("ctrl + c:")
-        epd7in5_V2.epdconfig.module_exit()
-        exit()
+except KeyboardInterrupt:    
+    logging.info("ctrl + c:")
+    epd7in5_V2.epdconfig.module_exit()
+    exit()
