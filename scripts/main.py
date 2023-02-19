@@ -53,7 +53,9 @@ def display_calendar_event(canva):
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
         
 def display_weather_data(canva):
-    canva.add_object(Text(title_font, 20, 100, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
+    canva.add_object(Text(title_font, 20, 100, "Temp: {}°C".format(weatherAPI.current_temperature), 0, "center"))
+    canva.add_object(Text(text_font, 20, 120, "Pres: {}hPa".format(weatherAPI.current_temperature), 0, "center"))
+    canva.add_object(Text(text_font, 20, 140, "Hum: {}%".format(weatherAPI.current_temperature), 0, "center"))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
