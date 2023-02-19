@@ -32,11 +32,16 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 def addCalendarEvent(canva):
     X = 15
     Y = 500
-    textSpacing = 20
-    weekSpacing = 8
+    text_spacing = 20
+    week_spacing = 8
+    weeks_number = 0 #To store how many weeks are there
+    lastWeek = calendar_events[0][0].isocalendar().week
     for i_event in range(len(calendar_events)):
         date_str = str(calendar_events[i_event][0].day) + " " + months[calendar_events[i_event][0].month-1] + " - " + str(calendar_events[i_event][0].hour) + ":" + ("0" + str(calendar_events[i_event][0].minute))[-2:]
-        canva.add_object(Text(text_font, X, Y+textSpacing*i_event, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
+        if calendar_events[i_event][0].isocalendar().week != lastWeek:
+            lastWeek = calendar_events[i_event][0].isocalendar().week
+            weeks_number += 1
+        canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)

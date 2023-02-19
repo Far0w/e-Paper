@@ -8,7 +8,7 @@ class dataCollector:
         
     def download_events(self):
         colnames = ['date','event']
-        events = []
+        events = ["No data found."]
         try:
             df = pd.read_csv(self.events_spreadsheet_URL, names=colnames)
             events = [ [parser.parse(df.iloc[i].date), df.iloc[i].event] for i in range(len(df))]
