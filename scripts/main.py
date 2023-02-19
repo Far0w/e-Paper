@@ -28,7 +28,7 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 
 def canva(epd):
     title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
-    text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 18)
+    text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
     canva1 = Canva(epd.width,epd.height)
 
     canva1.add_object(Rectangle(0,0,479,72))
