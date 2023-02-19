@@ -24,6 +24,9 @@ logging.basicConfig(level=logging.DEBUG)
 data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
 calendar_events = data_collector.download_events()
 
+title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
+text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
+
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 def addCalendarEvent(canva):
@@ -36,8 +39,6 @@ def addCalendarEvent(canva):
         canva.add_object(Text(text_font, X, Y+textSpacing*i_event, date_str + " | "+ calendar_events[i_event][1], 0, "center"))
 
 def canva(epd):
-    title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
-    text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
     canva1 = Canva(epd.width,epd.height)
 
     canva1.add_object(Rectangle(0,0,479,72))
