@@ -5,6 +5,7 @@ import os
 import pandas as pd
 from dateutil import parser
 from data_collection import dataCollector
+from weather import WeatherAPI
 from display import Display, Canva, Text, Rectangle, Line
 import logging
 from waveshare_epd import epd7in5_V2
@@ -30,12 +31,13 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 refresh_time = 0.5 # time in minutes to refresh the screen
 
 data_collector = dataCollector('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJtzo9q4NS01XynS0s6ic1da7o8sENcO_QCBlt9UbrKw24ltaRj0cdAKcRCSoG3j4-QdSvMJnxBb_i/pub?output=csv')
+weatherAPI = WeatherAPI()
 
 def signal_handler(signal, frame): # To cut the infinite loop
     global interrupted
     interrupted = True
 
-def addCalendarEvent(canva):
+def display_calendar_event(canva):
     X = 15
     Y = 500
     text_spacing = 20
@@ -50,8 +52,8 @@ def addCalendarEvent(canva):
             weeks_number += 1
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
         
-def weather():
-    pass
+def display_weather_data(canva):
+    canva.add_object(Text(title_font, 20, 50, weatherAPI.current_temperature, 0, "center"))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
@@ -60,7 +62,8 @@ def canva(epd):
     todayDate = date.today().strftime("%A %d %B")
     canva1.add_object(Text(title_font, 20, 5, todayDate, 0, "center"))
     
-    addCalendarEvent(canva1)
+    display_calendar_event(canva1)
+    display_weather_data(canva1)
     
     canva1.add_object(Rectangle(0,765,479,35,0))
     canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
@@ -75,6 +78,7 @@ interrupted = False
 while True:
     try:
         calendar_events = data_collector.download_events()
+        weatherAPI.update_data()
 
         epd = epd7in5_V2.EPD()
         display = Display(epd, picdir, libdir, fontdir)
