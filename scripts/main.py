@@ -79,25 +79,25 @@ signal.signal(signal.SIGINT, signal_handler)
 interrupted = False
 
 try:
-    while True:
-        calendar_events = data_collector.download_events()
-        weatherAPI.update_data()
+    #while True:
+    calendar_events = data_collector.download_events()
+    weatherAPI.update_data()
 
-        epd = epd7in5_V2.EPD()
-        display = Display(epd, picdir, libdir, fontdir)
+    epd = epd7in5_V2.EPD()
+    display = Display(epd, picdir, libdir, fontdir)
 
-        display.clear()
+    display.clear()
 
-        display.draw_canva(canva(epd))
+    display.draw_canva(canva(epd))
 
-        display.sleep()
-            
-        for i in range(int(refresh_time*60)):#yuck... 
-            if interrupted:
-                print("Cutting the loop...")
-                exit()
-                break
-            time.sleep(1)
+    display.sleep()
+
+    #for i in range(int(refresh_time*60)):#yuck... 
+        #if interrupted:
+            ##print("Cutting the loop...")
+            #exit()
+            #break
+        #time.sleep(1)
 
 except IOError as e:
     logging.info(e)
