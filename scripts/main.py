@@ -10,6 +10,7 @@ from display import Display, Canva, Text, Rectangle, Line, Picture
 import logging
 from waveshare_epd import epd7in5_V2
 from PIL import Image,ImageDraw,ImageFont
+from Domain.Models.Point import Point
 from datetime import datetime as date
 import traceback
 import time
@@ -64,17 +65,23 @@ def display_weather_data(canva):
     canva.add_object(Text(text_font, X+180, Y+80, "{}%".format(weatherAPI.current_humidity), 0, "center"))
    
     #time.sleep(2)
+    
+def display_title_date(canva):
+    canva.add_object(Rectangle(0,0,479,72))
+    todayDate = date.today().strftime("%A %d %B")
+    
+    text_width, text_height = image_draw.textsize(text, font)
+    
+    canva.add_object(Text(title_font, 240 - (text_width / 2), 35 - (text_height / 2), todayDate, 0, "left"))
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
     
     display_weather_data(canva1)
-
-    canva1.add_object(Rectangle(0,0,479,72))
-    todayDate = date.today().strftime("%A %d %B")
-    canva1.add_object(Text(title_font, 20, 5, todayDate, 0, "center"))
     
     display_calendar_event(canva1)
+    
+    display_title_date(canva1)
     
     canva1.add_object(Rectangle(0,765,479,35,0))
     canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
