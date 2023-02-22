@@ -96,7 +96,7 @@ class Canva: # Object to draw on that will return an image to display
             elif isinstance(obj, Line):
                 logging.info("Drawing a line...")
                 self.draw.line(obj.xy, fill = obj.fill_color, width = obj.width)
-            elif isinstance(obj, Image):
+            elif isinstance(obj, Picture):
                 logging.info("Drawing a image...")
                 self.image.paste(obj.pic, (obj.X,obj.Y))
                 
