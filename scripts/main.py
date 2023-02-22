@@ -59,9 +59,9 @@ def display_weather_data(canva):
     bmp = Image.open(os.path.join(picdir, '02.bmp'))
     canva.add_object(Picture(bmp, X,Y-50))
     
-    canva.add_object(Text(title_font, X, Y, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
-    canva.add_object(Text(text_font, X+100, Y+60, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
-    canva.add_object(Text(text_font, X+100, Y+80, "{}%".format(weatherAPI.current_humidity), 0, "center"))
+    canva.add_object(Text(title_font, X+200, Y, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
+    canva.add_object(Text(text_font, X+200, Y+60, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
+    canva.add_object(Text(text_font, X+200, Y+80, "{}%".format(weatherAPI.current_humidity), 0, "center"))
    
     #time.sleep(2)
 
