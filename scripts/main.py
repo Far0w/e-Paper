@@ -54,13 +54,13 @@ def display_calendar_event(canva):
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str + " | "+ calendar_events[i_event][1], 0))
         
 def display_weather_data(canva):
+    bmp = Image.open(os.path.join(picdir, '02.bmp'))
     canva.add_object(Picture(bmp, 50,10))
     
     canva.add_object(Text(title_font, 20, 100, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
     canva.add_object(Text(text_font, 20, 160, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
     canva.add_object(Text(text_font, 20, 180, "{}%".format(weatherAPI.current_humidity), 0, "center"))
-    
-    bmp = Image.open(os.path.join(picdir, '02.bmp'))
+   
     #time.sleep(2)
 
 def canva(epd):
