@@ -12,6 +12,7 @@ class WeatherAPI():
         self.current_pressure = "NA"
         self.current_humidity = "NA"
         self.current_weather_desc = "NA"
+        self.icon = None
         
     def update_data(self):
         response = requests.get(self.complete_url)
@@ -28,6 +29,7 @@ class WeatherAPI():
             self.current_humidity = self.y["humidity"]
             self.z = self.x["weather"]
             self.current_weather_desc = self.z[0]["description"]
+            self.icon = self.z[0]["icon"][:-1]
 
             #print(" Temperature : {} \n atmospheric pressure (in hPa unit) = {} \n humidity (in percentage) = {} \n description = {}".format(str(self.current_temperature),str(self.current_pressure),str(self.current_humidity),str(self.weather_description)))
 
