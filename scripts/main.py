@@ -6,7 +6,7 @@ import pandas as pd
 from dateutil import parser
 from data_collection import dataCollector
 from weather import WeatherAPI
-from display import Display, Canva, Text, Rectangle, Line
+from display import Display, Canva, Text, Rectangle, Line, Picture
 import logging
 from waveshare_epd import epd7in5_V2
 from PIL import Image,ImageDraw,ImageFont
