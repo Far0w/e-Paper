@@ -74,6 +74,7 @@ class Canva: # Object to draw on that will return an image to display
         self.vertical_mode = vertical_mode
         self.image = Image.new('1', (self.height, self.width), 255)  # image file where all object are drawn on 
         self.objects = []
+        self.draw = None
         #self.fontdir = fontdir
         #self.title_font = ImageFont.truetype(os.path.join(self.fontdir, 'NiceChalk.ttf'), 40)
         
