@@ -64,13 +64,14 @@ def display_weather_data(canva):
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
+    
+    display_weather_data(canva1)
 
     canva1.add_object(Rectangle(0,0,479,72))
     todayDate = date.today().strftime("%A %d %B")
     canva1.add_object(Text(title_font, 20, 5, todayDate, 0, "center"))
     
     display_calendar_event(canva1)
-    display_weather_data(canva1)
     
     canva1.add_object(Rectangle(0,765,479,35,0))
     canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
