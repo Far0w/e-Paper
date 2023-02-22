@@ -96,6 +96,10 @@ class Canva: # Object to draw on that will return an image to display
             elif isinstance(obj, Line):
                 logging.info("Drawing a line...")
                 self.draw.line(obj.xy, fill = obj.fill_color, width = obj.width)
+            elif isinstance(obj, Image):
+                logging.info("Drawing a image...")
+                self.paste(obj.image, (obj.X,obj.Y))
+                
         logging.info("Drawing ended.")
 
         
@@ -123,6 +127,12 @@ class Text:
         self.text = text
         self.fill_color = fill_color
         self.align = align
+        
+class Image:
+    def __init__(self, bmp, X = 0, Y = 0):
+        self.image = bmp
+        self.X = X
+        self.Y = Y
 
 #ImageDraw.text(xy, text, fill=None, font=None, anchor=None, spacing=4, align='left', direction=None, features=None, language=None, stroke_width=0, stroke_fill=None, embedded_color=False)
         
