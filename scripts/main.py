@@ -69,7 +69,7 @@ def display_title_date(canva):
     canva.add_object(Rectangle(0,0,479,72))
     todayDate = date.today().strftime("%A %d %B")
     
-    text_width, text_height = canva.draw.textsize(todayDate, font)
+    text_width, text_height = canva.draw.textsize(todayDate, title_font)
     
     canva.add_object(Text(title_font, 240 - (text_width / 2), 35 - (text_height / 2), todayDate, 0, "left"))
 
