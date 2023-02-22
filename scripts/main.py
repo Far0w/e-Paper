@@ -10,7 +10,6 @@ from display import Display, Canva, Text, Rectangle, Line, Picture
 import logging
 from waveshare_epd import epd7in5_V2
 from PIL import Image,ImageDraw,ImageFont
-from Domain.Models.Point import Point
 from datetime import datetime as date
 import traceback
 import time
