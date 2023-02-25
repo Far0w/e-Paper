@@ -83,9 +83,19 @@ def display_quotes(canva, author = "Nietzsche"):
     X = 10
     Y = 300
     padding = 10
+    quote_limit = 250
     quote = QuoteAPI.random_search(author)
+    logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
+    nb_iter = 1
+    max_iter = 25
+    while len(quote) > quote_limit and nb_iter < max_iter: # To get only "small" quotes ( limited by length size < quote_limit)
+        quote = QuoteAPI.random_search(author)
+        logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
+        nb_iter += 1
+        if nb_iter - 1 = max_iter:
+            logging.info("Did not found any quote smaller than {} characters.".format(quote_limit))
     canva.add_object(Rectangle(X = X, Y = Y, width = 460, height = 75, fill_color = 225, outline_color = 0, linewidth = 2))
-    canva.add_object(Text(text_font, X + padding, Y + padding, quote, 0, "center"))
+    canva.add_object(Text(text_font, X + padding, Y + padding, quote, 0, "left"))
         
 
 def canva(epd):
