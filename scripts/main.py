@@ -122,6 +122,8 @@ def display_quotes(canva, author = "Nietzsche"):
             else:
                 line += quote_words_list.pop() + " " # Delete last word from the quote list, add the word to the line, add a space
         formated_quote += line
+    logging.info("Formated quote {}.".format(formated_quote))   
+    
     # Adding quote + frame
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
     canva.add_object(Text(quote_font, X + padding, Y + padding, formated_quote, 0, "left"))
