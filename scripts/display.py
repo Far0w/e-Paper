@@ -86,9 +86,9 @@ class Canva: # Object to draw on that will return an image to display
             if isinstance(obj, Rectangle):
                 logging.info("Drawing a rectangle...")
                 if self.vertical_mode:
-                    self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+                    self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width-1, obj.Y+obj.height-1), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
                 else:
-                    self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width, obj.Y+obj.height), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
+                    self.draw.rectangle((obj.X, obj.Y, obj.X+obj.width-1, obj.Y+obj.height-1), fill = obj.fill_color, outline = obj.outline_color, width = obj.linewidth)
             elif isinstance(obj, Text):
                 logging.info("Drawing a text...")
                 self.draw.text((obj.X, obj.Y), obj.text, font = obj.font, fill = obj.fill_color, align = obj.align)
@@ -133,55 +133,5 @@ class Picture:
         self.X = X
         self.Y = Y
 
-#ImageDraw.text(xy, text, fill=None, font=None, anchor=None, spacing=4, align='left', direction=None, features=None, language=None, stroke_width=0, stroke_fill=None, embedded_color=False)
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-class Module: # Module inside canva
-    
-    def __init__(self, width = 10, height = 10, posX = 0, posY = 0):
-        self.height = height
-        self.width  = width
-        self.posX = posX
-        self.posY = posY
-        
-       
-    
-    
-    
-    
-    
-    
-    
-    #logging.info("3.read bmp file")
-    #Himage = Image.open(os.path.join(self.picdir, '7in5_V2.bmp'))
-    #epd.display(epd.getbuffer(Himage))
-    #time.sleep(2)
-
-    #logging.info("4.read bmp file on window")
-    #Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-    #bmp = Image.open(os.path.join(self.picdir, '100x100.bmp'))
-    #Himage2.paste(bmp, (50,10))
-    #epd.display(epd.getbuffer(Himage2))
-    #time.sleep(2)
-        
+#ImageDraw.text(xy, text, fill=None, font=None, anchor=None, spacing=4, align='left', direction=None, features=None, language=None, stroke_width=0, stroke_fill=None, embedded_color=False)   
        

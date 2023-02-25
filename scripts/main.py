@@ -9,7 +9,7 @@ from weather import WeatherAPI
 from display import Display, Canva, Text, Rectangle, Line, Picture
 import logging
 from waveshare_epd import epd7in5_V2
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime as date
 import traceback
 import time
@@ -20,6 +20,7 @@ from quote import cli as QuoteAPI
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
+
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
@@ -28,7 +29,7 @@ logging.basicConfig(level=logging.DEBUG)
 title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
 text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
-months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"] # For calendar display
 
 refresh_time = 10 # time in minutes to refresh the screen
 
@@ -75,22 +76,27 @@ def display_title_date(canva):
     
     
 def display_footer(canva):
-    quote = QuoteAPI.random_search("Nietzsche")
     canva.add_object(Rectangle(0,765,479,35,0))
-    canva.add_object(Text(text_font, 10, 780, quote, 255, "center"))
-    #canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
-    
+    canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
+
+def display_quotes(canva, author = "Nietzsche"):
+    X = 10
+    Y = 300
+    quote = QuoteAPI.random_search(author)
+    canva.add_object(Rectangle(X = X, Y = Y, width = 460, height = 75, fill_color = 255, outline_color = 0, linewidth = 2))
+    canva.add_object(Text(text_font, X, Y, quote, 255, "center"))
+        
 
 def canva(epd):
-    canva1 = Canva(epd.width,epd.height)
+    canva_obj = Canva(epd.width,epd.height)
     
-    display_weather_data(canva1)   
-    display_calendar_event(canva1)   
-    display_title_date(canva1)
-    display_footer(canva1)
+    display_weather_data(canva_obj)   
+    display_calendar_event(canva_obj)   
+    display_title_date(canva_obj)
+    display_footer(canva_obj)
     
-    canva1.draw_objects()
-    return canva1
+    canva_obj.draw_objects()
+    return canva_obj
 
 
 signal.signal(signal.SIGINT, signal_handler)
