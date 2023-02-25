@@ -15,7 +15,7 @@ import traceback
 import time
 import signal
 import credentials
-from quote import cli as random_quote
+from quote import cli as QuoteAPI
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
@@ -75,10 +75,10 @@ def display_title_date(canva):
     
     
 def display_footer(canva):
-    quote = random_quote("Nietzsche")
+    quote = QuoteAPI.random_search("Nietzsche")
     canva.add_object(Rectangle(0,765,479,35,0))
     canva.add_object(Text(text_font, 10, 780, quote, 255, "center"))
-    canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
+    #canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     
 
 def canva(epd):
