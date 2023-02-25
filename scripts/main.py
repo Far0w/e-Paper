@@ -107,7 +107,7 @@ def display_quotes(canva, author = "Nietzsche"):
     selected_quote = quote.replace("\n", " ")
     text_width, text_height = canva.draw.textsize(selected_quote, quote_font)
     width_available = width - 2*padding
-    nb_iter = text_width//width_available
+    nb_iter = text_width//width_available + 1
     if text_width%width_available != 0 and text_width%width_available !=text_width:
         nb_iter += 1
     quote_words_list = selected_quote.split(" ")
@@ -117,7 +117,7 @@ def display_quotes(canva, author = "Nietzsche"):
         line = ""
         while len(line) < width_available:
             # on oublie pas d'ajouter un espace a la fin de la ligne
-            if (length_line + len(quote_words_list[-1]) > width_available):
+            if (len(line) + len(quote_words_list[-1]) > width_available):
                 line.append("\n")
             else:
                 line += quote_words_list.pop() + " " # Delete last word from the quote list, add the word to the line, add a space
