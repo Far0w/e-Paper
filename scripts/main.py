@@ -82,20 +82,48 @@ def display_footer(canva):
 def display_quotes(canva, author = "Nietzsche"):
     X = 10
     Y = 300
+    width = 460
+    height = 75
+    Y_size = 300
     padding = 10
     quote_limit = 150
     quote = QuoteAPI.random_search(author)
     logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
     nb_iter = 1
     max_iter = 25
+    
+    # Getting a quote
     while len(quote) > quote_limit and nb_iter < max_iter: # To get only "small" quotes ( limited by length size < quote_limit)
         quote = QuoteAPI.random_search(author)
         logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
         nb_iter += 1
         if nb_iter - 1 == max_iter:
-            logging.info("Did not found any quote smaller than {} characters.".format(quote_limit))
-    canva.add_object(Rectangle(X = X, Y = Y, width = 460, height = 75, fill_color = 225, outline_color = 0, linewidth = 2))
-    canva.add_object(Text(text_font, X + padding, Y + padding, quote, 0, "left"))
+            logging.info("Did not found any quote smaller than {} characters. Increase quote_limit.".format(quote_limit))
+            quote = "No quote for today!"
+            
+    # Reformating the quote to fit the module width (not height)
+    # Ajouter une condition pour que nb_iter*text_height < height et c'est bon
+    selected_quote = quote.replace("\n", " ")
+    text_width, text_height = canva.draw.textsize(todayDate, title_font)
+    width_available = width - 2*padding
+    nb_iter = text_width//width_available
+    if text_width%width_available != 0 and text_width%width_available !=text_width:
+        nb_iter += 1
+    quote_words_list = selected_quote.split(" ")
+    quote_words_list.reverse()
+    formated_quote = ""
+    for _ in range(nb_iter):
+        line = ""
+        while len(line) < width_available:
+            # on oublie pas d'ajouter un espace a la fin de la ligne
+            if (length_line + len(quote_words_list[-1]) > width_available):
+                line.append("\n")
+            else:
+                line += quote_words_list.pop() + " " # Delete last word from the quote list, add the word to the line, add a space
+        formated_quote += line
+    # Adding quote + frame
+    canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
+    canva.add_object(Text(text_font, X + padding, Y + padding, formated_quote, 0, "left"))
         
 
 def canva(epd):
