@@ -83,7 +83,7 @@ def display_quotes(canva, author = "Nietzsche"):
     X = 10
     Y = 300
     padding = 10
-    quote_limit = 250
+    quote_limit = 150
     quote = QuoteAPI.random_search(author)
     logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
     nb_iter = 1
