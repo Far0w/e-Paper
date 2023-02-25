@@ -87,6 +87,7 @@ def display_quotes(canva, author = "Nietzsche"):
     Y_size = 300
     padding = 10
     quote_limit = 150
+    quote_font = text_font
     quote = QuoteAPI.random_search(author)
     logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
     nb_iter = 1
@@ -104,7 +105,7 @@ def display_quotes(canva, author = "Nietzsche"):
     # Reformating the quote to fit the module width (not height)
     # Ajouter une condition pour que nb_iter*text_height < height et c'est bon
     selected_quote = quote.replace("\n", " ")
-    text_width, text_height = canva.draw.textsize(todayDate, title_font)
+    text_width, text_height = canva.draw.textsize(selected_quote, quote_font)
     width_available = width - 2*padding
     nb_iter = text_width//width_available
     if text_width%width_available != 0 and text_width%width_available !=text_width:
@@ -123,7 +124,7 @@ def display_quotes(canva, author = "Nietzsche"):
         formated_quote += line
     # Adding quote + frame
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
-    canva.add_object(Text(text_font, X + padding, Y + padding, formated_quote, 0, "left"))
+    canva.add_object(Text(quote_font, X + padding, Y + padding, formated_quote, 0, "left"))
         
 
 def canva(epd):
