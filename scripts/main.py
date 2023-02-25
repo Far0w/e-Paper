@@ -82,8 +82,9 @@ def display_footer(canva):
 def display_quotes(canva, author = "Nietzsche"):
     X = 10
     Y = 300
+    padding = 10
     quote = QuoteAPI.random_search(author)
-    canva.add_object(Rectangle(X = X, Y = Y, width = 460, height = 75, fill_color = 255, outline_color = 0, linewidth = 2))
+    canva.add_object(Rectangle(X = X + padding, Y = Y + padding, width = 460, height = 75, fill_color = 255, outline_color = 0, linewidth = 2))
     canva.add_object(Text(text_font, X, Y, quote, 0, "center"))
         
 
