@@ -127,7 +127,7 @@ def display_quotes(canva, author = "Sartre"):
                 break
         formated_quote += line
     formated_quote += "\n\n{}.".format(author)
-    logging.info("Formated quote {}.".format(formated_quote))   
+    logging.info("Formated quote:\n{}".format(formated_quote))   
     
     # Adding quote + frame
     text_width, text_height = canva.draw.textsize(formated_quote, quote_font)
