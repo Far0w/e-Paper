@@ -77,18 +77,17 @@ def display_title_date(canva):
 def display_footer(canva):
     quote = random_quote("Nietzsche")
     canva.add_object(Rectangle(0,765,479,35,0))
-    #canva.add_object(Text(text_font, 10, 780, quote, 255, "center"))
+    canva.add_object(Text(text_font, 10, 780, quote, 255, "center"))
     canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
     
-    display_weather_data(canva1)
-    
-    display_calendar_event(canva1)
-    
+    display_weather_data(canva1)   
+    display_calendar_event(canva1)   
     display_title_date(canva1)
+    display_display_footer(canva1)
     
     canva1.draw_objects()
     return canva1
