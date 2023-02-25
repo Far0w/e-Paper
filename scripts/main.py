@@ -94,6 +94,7 @@ def canva(epd):
     display_calendar_event(canva_obj)   
     display_title_date(canva_obj)
     display_footer(canva_obj)
+    display_quotes(canva_obj)
     
     canva_obj.draw_objects()
     return canva_obj
