@@ -15,6 +15,7 @@ import traceback
 import time
 import signal
 import credentials
+from quote import cli as random_quote
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
@@ -63,8 +64,7 @@ def display_weather_data(canva):
     canva.add_object(Text(text_font, X+180, Y+60, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
     canva.add_object(Text(text_font, X+180, Y+80, "{}%".format(weatherAPI.current_humidity), 0, "center"))
     canva.add_object(Line([X+280,Y+10,X+280,Y+90]))
-   
-    
+
 def display_title_date(canva):
     X_size = 480
     Y_size = 72
@@ -72,6 +72,14 @@ def display_title_date(canva):
     todayDate = date.today().strftime("%A %d %B")
     text_width, text_height = canva.draw.textsize(todayDate, title_font)
     canva.add_object(Text(title_font, X_size//2 - (text_width / 2), Y_size//2 - (text_height / 2)-5, todayDate, 0, "left"))
+    
+    
+def display_footer(canva):
+    quote = random_quote("Nietzsche")
+    canva1.add_object(Rectangle(0,765,479,35,0))
+    canva1.add_object(Text(text_font, 10, 780, quote, 255, "center"))
+    canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
+    
 
 def canva(epd):
     canva1 = Canva(epd.width,epd.height)
@@ -81,9 +89,6 @@ def canva(epd):
     display_calendar_event(canva1)
     
     display_title_date(canva1)
-    
-    canva1.add_object(Rectangle(0,765,479,35,0))
-    canva1.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     
     canva1.draw_objects()
     return canva1
