@@ -126,6 +126,7 @@ def display_quotes(canva, author = "Nietzsche"):
             else:
                 break
         formated_quote += line
+    formated_quote += "\n{}.".format(author)
     logging.info("Formated quote {}.".format(formated_quote))   
     
     # Adding quote + frame
