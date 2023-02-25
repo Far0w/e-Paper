@@ -129,7 +129,7 @@ def display_quotes(canva, author = "Nietzsche"):
     logging.info("Formated quote {}.".format(formated_quote))   
     
     # Adding quote + frame
-    text_width, text_height = canva.draw.textsize(selected_quote, quote_font)
+    text_width, text_height = canva.draw.textsize(formated_quote, quote_font)
     X_adjustment = (width_available-text_width)//2
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
     canva.add_object(Text(quote_font, X + padding + X_adjustment, Y + padding, formated_quote, 0, "left"))
