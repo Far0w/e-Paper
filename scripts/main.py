@@ -84,7 +84,7 @@ def display_quotes(canva, author = "Nietzsche"):
     Y = 300
     quote = QuoteAPI.random_search(author)
     canva.add_object(Rectangle(X = X, Y = Y, width = 460, height = 75, fill_color = 255, outline_color = 0, linewidth = 2))
-    canva.add_object(Text(text_font, X, Y, quote, 255, "center"))
+    canva.add_object(Text(text_font, X, Y, quote, 0, "center"))
         
 
 def canva(epd):
