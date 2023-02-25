@@ -64,7 +64,8 @@ def display_weather_data(canva):
     canva.add_object(Text(title_font, X+180, Y, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
     canva.add_object(Text(text_font, X+180, Y+60, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
     canva.add_object(Text(text_font, X+180, Y+80, "{}%".format(weatherAPI.current_humidity), 0, "center"))
-    canva.add_object(Line([X+280,Y+10,X+280,Y+90]))
+    canva.add_object(Text(text_font, X+320, Y, "Tomorrow:", 0, "center"))
+    canva.add_object(Line([X+300,Y+10,X+300,Y+90]))
 
 def display_title_date(canva):
     X_size = 480
@@ -86,7 +87,7 @@ def display_quotes(canva, author = "Marcus Aurelius"):
     height = 75
     Y_size = 300
     padding = 10
-    quote_limit = 260
+    quote_limit = 150
     quote_font = text_font
     quote = QuoteAPI.random_search(author)
     logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
