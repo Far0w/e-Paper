@@ -119,8 +119,10 @@ def display_quotes(canva, author = "Nietzsche"):
             # on oublie pas d'ajouter un espace a la fin de la ligne
             if (len(quote_words_list) > 0 and len(line) + len(quote_words_list[-1]) > width_available):
                 line.append("\n")
-            else:
+            elif len(quote_words_list) > 0:
                 line += quote_words_list.pop() + " " # Delete last word from the quote list, add the word to the line, add a space
+            else:
+                break
         formated_quote += line
     logging.info("Formated quote {}.".format(formated_quote))   
     
