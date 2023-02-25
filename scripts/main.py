@@ -86,7 +86,7 @@ def display_quotes(canva, author = "Sartre"):
     height = 75
     Y_size = 300
     padding = 10
-    quote_limit = 150
+    quote_limit = 260
     quote_font = text_font
     quote = QuoteAPI.random_search(author)
     logging.info("New quote: {} | size: {}.".format(quote, len(quote)))
