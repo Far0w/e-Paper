@@ -87,7 +87,7 @@ def canva(epd):
     display_weather_data(canva1)   
     display_calendar_event(canva1)   
     display_title_date(canva1)
-    display_display_footer(canva1)
+    display_footer(canva1)
     
     canva1.draw_objects()
     return canva1
