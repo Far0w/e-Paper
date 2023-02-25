@@ -79,7 +79,7 @@ def display_footer(canva):
     canva.add_object(Rectangle(0,765,479,35,0))
     canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
 
-def display_quotes(canva, author = "Nietzsche"):
+def display_quotes(canva, author = "Sartre"):
     X = 10
     Y = 300
     width = 460
@@ -126,7 +126,7 @@ def display_quotes(canva, author = "Nietzsche"):
             else:
                 break
         formated_quote += line
-    formated_quote += "\n{}.".format(author)
+    formated_quote += "\n\n{}.".format(author)
     logging.info("Formated quote {}.".format(formated_quote))   
     
     # Adding quote + frame
