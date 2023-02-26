@@ -1,7 +1,7 @@
 import pandas as pd
 from dateutil import parser
 
-class dataCollector:
+class GSheetDataCollector:
     
     def __init__(self, events_spreadsheet_URL:str):
         self.events_spreadsheet_URL = events_spreadsheet_URL
@@ -16,3 +16,9 @@ class dataCollector:
         except:
             print("Events download failed. 0 event downloaded.")
         return events
+    
+    
+class NotionDataCollector:
+    
+    def __init__(self):
+        pass

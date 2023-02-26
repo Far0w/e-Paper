@@ -4,7 +4,7 @@ import sys
 import os
 import pandas as pd
 from dateutil import parser
-from data_collection import dataCollector
+from data_collection import GSheetDataCollector
 from weather import WeatherAPI
 from display import Display, Canva, Text, Rectangle, Line, Picture
 import logging
@@ -33,7 +33,7 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 
 refresh_time = 10 # time in minutes to refresh the screen
 
-data_collector = dataCollector(credentials.calendar_spreadsheet_link)
+GSheet_data_collector = GSheetDataCollector(credentials.calendar_spreadsheet_link)
 weatherAPI = WeatherAPI(credentials.weather_API_key)
 
 def signal_handler(signal, frame): # To cut the infinite loop
@@ -156,7 +156,7 @@ signal.signal(signal.SIGINT, signal_handler)
 interrupted = False
 
 try:
-    calendar_events = data_collector.download_events()
+    calendar_events = GSheet_data_collector.download_events()
     weatherAPI.update_data()
 
     epd = epd7in5_V2.EPD()
