@@ -4,7 +4,7 @@ import sys
 import os
 import pandas as pd
 from dateutil import parser
-from data_collection import GSheetDataCollector
+from data_collection import GSheetDataCollector, NotionDataCollector
 from weather import WeatherAPI
 from display import Display, Canva, Text, Rectangle, Line, Picture
 import logging
@@ -34,6 +34,7 @@ months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "
 refresh_time = 10 # time in minutes to refresh the screen
 
 GSheet_data_collector = GSheetDataCollector(credentials.calendar_spreadsheet_link)
+Notion_data_collector = NotionDataCollector(credentials.notion_API_key, credentials.notion_todolist_database_id)
 weatherAPI = WeatherAPI(credentials.weather_API_key)
 
 def signal_handler(signal, frame): # To cut the infinite loop
