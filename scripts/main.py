@@ -80,10 +80,17 @@ def display_title_date(canva):
 def display_footer(canva):
     canva.add_object(Rectangle(0,765,479,35,0))
     canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
+    
+def display_todolist(canva):
+    X = 10
+    Y = 200
+    width = 460
+    height = 75
+    canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
 
 def display_quotes(canva, author = "Marcus Aurelius"):
     X = 10
-    Y = 300
+    Y = 400
     width = 460
     height = 75
     Y_size = 300
@@ -142,6 +149,7 @@ def display_quotes(canva, author = "Marcus Aurelius"):
 def canva(epd):
     canva_obj = Canva(epd.width,epd.height)
     
+    display_todolist(canva_obj)
     display_weather_data(canva_obj)   
     display_calendar_event(canva_obj)   
     display_title_date(canva_obj)
