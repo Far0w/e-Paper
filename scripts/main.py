@@ -93,7 +93,7 @@ def display_todolist(canva):
     logging.info("Task downloaded: {}.".format(tasks))
     
     for i in range(len(tasks)):
-        canva.add_object(Text(text_font, X + i*20, 780, tasks[i], 0, "center"))
+        canva.add_object(Text(text_font, X + 20, Y + (i+1)*20, tasks[i], 0, "left"))
         
 
 def display_quotes(canva, author = "Marcus Aurelius"):
