@@ -90,7 +90,7 @@ def display_todolist(canva):
 
 def display_quotes(canva, author = "Marcus Aurelius"):
     X = 10
-    Y = 220
+    Y = 250
     width = 460
     height = 75
     Y_size = 300
