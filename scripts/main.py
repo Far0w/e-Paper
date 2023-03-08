@@ -83,14 +83,14 @@ def display_footer(canva):
     
 def display_todolist(canva):
     X = 10
-    Y = 200
+    Y = 250
     width = 460
     height = 75
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
 
 def display_quotes(canva, author = "Marcus Aurelius"):
     X = 10
-    Y = 400
+    Y = 380
     width = 460
     height = 75
     Y_size = 300
