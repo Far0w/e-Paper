@@ -43,7 +43,7 @@ def signal_handler(signal, frame): # To cut the infinite loop
 
 def display_calendar_event(canva):
     X = 15
-    Y = 500
+    Y = 530
     text_spacing = 20
     week_spacing = 8
     weeks_number = 0 #To store how many weeks are there
@@ -83,9 +83,9 @@ def display_footer(canva):
     
 def display_todolist(canva):
     X = 10
-    Y = 250
+    Y = 230
     width = 460
-    height = 75
+    height = 150
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
 
 def display_quotes(canva, author = "Marcus Aurelius"):
@@ -149,8 +149,8 @@ def display_quotes(canva, author = "Marcus Aurelius"):
 def canva(epd):
     canva_obj = Canva(epd.width,epd.height)
     
-    display_todolist(canva_obj)
-    display_weather_data(canva_obj)   
+    display_weather_data(canva_obj)  
+    display_todolist(canva_obj) 
     display_calendar_event(canva_obj)   
     display_title_date(canva_obj)
     display_footer(canva_obj)
