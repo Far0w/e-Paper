@@ -87,6 +87,13 @@ def display_todolist(canva):
     width = 460
     height = 150
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
+    
+    #Downloading tasks on todo list
+    tasks = Notion_data_collector.download_todo_list()
+    
+    for i in range(len(tasks)):
+        canva.add_object(Text(text_font, X + i*20, 780, tasks[i], 0, "center"))
+        
 
 def display_quotes(canva, author = "Marcus Aurelius"):
     X = 10
