@@ -113,7 +113,7 @@ class Rectangle:
         self.linewidth = linewidth
         
 class Line:
-    def __init__(self, xy = [], fill_color = 0, width = 2):
+    def __init__(self, xy = [], fill_color = 0, width = 2): # xy = [ (x0, y0), (x1,y1)]
         self.xy = xy
         self.fill_color = fill_color
         self.width = width
