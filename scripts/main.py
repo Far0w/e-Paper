@@ -88,7 +88,7 @@ def display_todolist(canva):
     height = 150
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
     canva.add_object(Line([(X,Y), (X, Y+height)]))
-    todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.png'))
+    todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
     canva.add_object(Picture(todo_icon, X+5,Y+5))
     
     #Downloading tasks on todo list
