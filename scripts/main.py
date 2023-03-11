@@ -153,7 +153,7 @@ def display_quotes(canva, author = "Marcus Aurelius"):
     text_width, text_height = canva.draw.textsize(formated_quote, quote_font)
     X_adjustment = (width_available-text_width)//2
     #canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
-    canva.add_object(Rectangle(X = X, Y = Y, width = width, height = Y_size, fill_color = 0, outline_color = 0, linewidth = 2))
+    canva.add_object(Rectangle(X = X, Y = Y, width = width, height = Y_size, fill_color = 255, outline_color = 255, linewidth = 2))
     canva.add_object(Text(quote_font, X + padding, Y + (Y_size - text_height)/2, formated_quote, 0, "left"))
         
 
