@@ -82,12 +82,14 @@ def display_footer(canva):
     canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     
 def display_todolist(canva):
-    X = 10
+    X = 20
     Y = 360
     width = 460
     height = 150
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
     canva.add_object(Line([(X,Y), (X, Y+height)]))
+    todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.png'))
+    canva.add_object(Picture(todo_icon, X+5,Y+5))
     
     #Downloading tasks on todo list
     tasks = Notion_data_collector.download_todo_list()
@@ -151,15 +153,16 @@ def display_quotes(canva, author = "Marcus Aurelius"):
     text_width, text_height = canva.draw.textsize(formated_quote, quote_font)
     X_adjustment = (width_available-text_width)//2
     #canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 0, linewidth = 2))
-    canva.add_object(Rectangle(X = X, Y = Y, width = width, height = Y_size, fill_color = 225, outline_color = 0, linewidth = 2))
+    canva.add_object(Rectangle(X = X, Y = Y, width = width, height = Y_size, fill_color = 0, outline_color = 0, linewidth = 2))
     canva.add_object(Text(quote_font, X + padding, Y + (Y_size - text_height)/2, formated_quote, 0, "left"))
         
 
 def canva(epd):
     canva_obj = Canva(epd.width,epd.height)
     
+    display_weather_data(canva_obj)
     display_title_date(canva_obj)
-    display_weather_data(canva_obj) 
+    
     display_quotes(canva_obj)
     canva_obj.add_object(Line([(50,340), (480-50, 340)], 0, 4))
     display_todolist(canva_obj) 
