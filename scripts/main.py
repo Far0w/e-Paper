@@ -86,8 +86,8 @@ def display_todolist(canva):
     Y = 360
     width = 460
     height = 150
-    canva.add_object(Line([(X,Y), (X, Y+height)]))
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
+    canva.add_object(Line([(X,Y), (X, Y+height)]))
     
     #Downloading tasks on todo list
     tasks = Notion_data_collector.download_todo_list()
