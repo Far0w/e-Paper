@@ -158,12 +158,13 @@ def display_quotes(canva, author = "Marcus Aurelius"):
 def canva(epd):
     canva_obj = Canva(epd.width,epd.height)
     
-    display_weather_data(canva_obj)  
+    display_title_date(canva_obj)
+    display_weather_data(canva_obj) 
+    display_quotes(canva_obj)
+    canva_obj.add_object(Line([(50,340), (480-50, 340)], 0, 4))
     display_todolist(canva_obj) 
     display_calendar_event(canva_obj)   
-    display_title_date(canva_obj)
     display_footer(canva_obj)
-    display_quotes(canva_obj)
     
     canva_obj.draw_objects()
     return canva_obj
