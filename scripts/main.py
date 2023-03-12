@@ -107,9 +107,9 @@ def display_todolist(canva):
     tile_width = width//nb_columns
     tile_height = (height-icon_height-padding_icon)//nb_lines
     for line_nb in range(nb_lines+1):
-        canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height+padding_icon), (X+width, Y+line_nb*tile_height+icon_height+padding_icon)]))
+        canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height+padding_icon), (X+width, Y+line_nb*tile_height+icon_height+padding_icon)], 255))
     for col_nb in range(nb_columns+1):
-        canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height+padding_icon), (X+col_nb*tile_width, Y+height)]))
+        canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height+padding_icon), (X+col_nb*tile_width, Y+height)], 255))
         
     #Adding tasks in the table
     table = [ ["" for i in range(nb_columns)] for j in range(nb_lines) ]
