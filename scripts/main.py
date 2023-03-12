@@ -88,11 +88,12 @@ def display_todolist(canva):
     height = 150
     nb_lines = 4
     nb_columns = 3
+    padding_icon = 5
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
     canva.add_object(Line([(X,Y), (X, Y+height)]))
     todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
     icon_width, icon_height = todo_icon.size
-    canva.add_object(Picture(todo_icon, X+5,Y+5))
+    canva.add_object(Picture(todo_icon, X+padding_icon,Y+padding_icon))
     
     #Downloading tasks on todo list
     tasks = Notion_data_collector.download_todo_list()
@@ -100,11 +101,11 @@ def display_todolist(canva):
     
     #Displaying grid
     tile_width = width//nb_columns
-    tile_height = (height-icon_height)//nb_lines
+    tile_height = (height-icon_height-padding_icon)//nb_lines
     for line_nb in range(nb_lines+1):
-        canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height), (X+width, Y+line_nb*tile_height+icon_height)]))
+        canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height+padding_icon), (X+width, Y+line_nb*tile_height+icon_height+padding_icon)]))
     for col_nb in range(nb_columns+1):
-        canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height), (X+col_nb*tile_width, Y+height+icon_height)]))
+        canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height+padding_icon), (X+col_nb*tile_width, Y+height)]))
             
     
     #for i in range(len(tasks)):
