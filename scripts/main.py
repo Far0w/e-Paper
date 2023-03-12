@@ -93,8 +93,8 @@ def display_todolist(canva):
     nb_lines = 4
     nb_columns = 3
     padding_icon = 5
+    padding_text = 5 # To be more spaced out from border of the module
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
-    canva.add_object(Line([(X,Y), (X, Y+height)]))
     todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
     icon_width, icon_height = todo_icon.size
     canva.add_object(Picture(todo_icon, X+padding_icon,Y+padding_icon))
@@ -125,9 +125,10 @@ def display_todolist(canva):
     for y in range(nb_lines):
         for x in range(nb_columns):
             task_to_display = table[y][x]
-            pos_x, pos_y = X + x*tile_width, Y + y*tile_height+icon_height+padding_icon
+            pos_x, pos_y = X + x*tile_width + padding_text, Y + y*tile_height + icon_height + padding_icon + padding_text
             canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
         
+    canva.add_object(Line([(X,Y), (X, Y+height)])) # Add an esthetic line
 
 def display_quotes(canva, author = "Marcus Aurelius"):
     X = 10
