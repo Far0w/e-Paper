@@ -3,6 +3,7 @@
 import sys
 import os
 import pandas as pd
+import random as rd
 from dateutil import parser
 from data_collection import GSheetDataCollector, NotionDataCollector
 from weather import WeatherAPI
@@ -82,6 +83,7 @@ def display_footer(canva):
     canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     
 def display_todolist(canva):
+    """This function create a table that store the differents tasks in a random position (more pleasant to see)."""
     X = 20
     Y = 360
     width = 460
@@ -106,10 +108,23 @@ def display_todolist(canva):
         canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height+padding_icon), (X+width, Y+line_nb*tile_height+icon_height+padding_icon)]))
     for col_nb in range(nb_columns+1):
         canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height+padding_icon), (X+col_nb*tile_width, Y+height)]))
-            
+        
+    #Adding tasks in the table
+    table = [ ["" for i in range(nb_columns)] for j in range(nb_lines) ]
+    possible_positions = [[i//nb_columns, i%nb_columns] for i in range(nb_columns*nb_lines)] # create a list of possible solutions that will reduce when the loop is running (bc possible positions will less and less be available)
+    rd.shuffle(tasks) # It could be useful if there is more tasks than cells : it will change tasks while updating
+
+    while len(tasks) > 0 and len(possible_positions) > 0:
+        element = tasks.pop()
+        position_taken = possible_positions.pop(rd.randint(0, len(possible_positions)-1))
+        line_index, col_index = position_taken[0], position_taken[1]
+        table[line_index][col_index] = element       
     
-    #for i in range(len(tasks)):
-        #canva.add_object(Text(text_font, X + 20, Y + (i+1)*20, tasks[i], 0, "left"))
+    for y in range(nb_lines):
+        for x in range(nb_columns):
+            task_to_display = table[y][x]
+            pos_x, pos_y = X + x*tile_width, Y + y*tile_height+icon_height+padding_icon
+            canva.add_object(Text(text_font, pos_x, pos_y, task_to_display, 0, "left"))
         
 
 def display_quotes(canva, author = "Marcus Aurelius"):
