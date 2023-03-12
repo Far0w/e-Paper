@@ -86,17 +86,29 @@ def display_todolist(canva):
     Y = 360
     width = 460
     height = 150
+    nb_lines = 4
+    nb_columns = 3
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
     canva.add_object(Line([(X,Y), (X, Y+height)]))
     todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
+    icon_width, icon_height, _ = todo_icon.shape
     canva.add_object(Picture(todo_icon, X+5,Y+5))
     
     #Downloading tasks on todo list
     tasks = Notion_data_collector.download_todo_list()
     logging.info("Task downloaded: {}.".format(tasks))
     
-    for i in range(len(tasks)):
-        canva.add_object(Text(text_font, X + 20, Y + (i+1)*20, tasks[i], 0, "left"))
+    #Displaying grid
+    tile_width = width//nb_columns
+    tile_height = (height-icon_height)//nb_lines
+    for line_nb in range(nb_lines+1):
+        canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height), (X+width, Y+line_nb*tile_height+icon_height)]))
+    for col_nb in range(nb_columns+1):
+        canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height), (X+col_nb*tile_width, Y+height+icon_height)]))
+            
+    
+    #for i in range(len(tasks)):
+        #canva.add_object(Text(text_font, X + 20, Y + (i+1)*20, tasks[i], 0, "left"))
         
 
 def display_quotes(canva, author = "Marcus Aurelius"):
