@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.DEBUG)
 title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
 text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
-other_size_fonts = [text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16),text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 20), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 24), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 28), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 32)]
+other_size_fonts = [ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 20), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 24), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 28), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 32)]
 
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"] # For calendar display
 
