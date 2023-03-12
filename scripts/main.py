@@ -30,6 +30,8 @@ logging.basicConfig(level=logging.DEBUG)
 title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
 text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
 
+other_size_fonts = [text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16),text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 20), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 24), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 28), text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 32)]
+
 months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"] # For calendar display
 
 refresh_time = 10 # time in minutes to refresh the screen
@@ -124,7 +126,7 @@ def display_todolist(canva):
         for x in range(nb_columns):
             task_to_display = table[y][x]
             pos_x, pos_y = X + x*tile_width, Y + y*tile_height+icon_height+padding_icon
-            canva.add_object(Text(text_font, pos_x, pos_y, task_to_display, 0, "left"))
+            canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
         
 
 def display_quotes(canva, author = "Marcus Aurelius"):
