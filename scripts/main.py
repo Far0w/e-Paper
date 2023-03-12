@@ -125,7 +125,7 @@ def display_todolist(canva):
     for y in range(nb_lines):
         for x in range(nb_columns):
             task_to_display = table[y][x]
-            pos_x, pos_y = X + x*tile_width + padding_text, Y + y*tile_height + icon_height + padding_icon + padding_text
+            pos_x, pos_y = X + x*tile_width + padding_text + rd.randint(-5,5), Y + y*tile_height + icon_height + padding_icon + padding_text
             canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
         
     canva.add_object(Line([(X,Y), (X, Y+height)])) # Add an esthetic line
