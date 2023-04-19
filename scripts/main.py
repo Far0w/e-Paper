@@ -99,7 +99,8 @@ def display_todolist(canva):
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
     todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
     icon_width, icon_height = todo_icon.size
-    canva.add_object(Picture(todo_icon, X+padding_icon,Y+padding_icon))
+    #canva.add_object(Picture(todo_icon, X+padding_icon,Y+padding_icon))
+    canva.add_object(Text(chalk_font, X+padding_icon, Y+padding_icon, "TO DO:", 0, "left"))
     
     #Downloading tasks on todo list
     tasks = Notion_data_collector.download_todo_list()
