@@ -100,37 +100,50 @@ def display_todolist(canva):
     todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
     icon_width, icon_height = todo_icon.size
     #canva.add_object(Picture(todo_icon, X+padding_icon,Y+padding_icon))
-    canva.add_object(Text(chalk_font, X+padding_icon, Y+padding_icon, "TO Do:", 0, "left"))
+    canva.add_object(Text(chalk_font, X+padding_icon, Y+padding_icon, "To Do:", 0, "left"))
     
     #Downloading tasks on todo list
     tasks = Notion_data_collector.download_todo_list()
     logging.info("Task downloaded: {}.".format(tasks))
     
-    #Displaying grid
-    tile_width = width//nb_columns
-    tile_height = (height-icon_height-padding_icon)//nb_lines
-    for line_nb in range(nb_lines+1):
-        canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height+padding_icon), (X+width, Y+line_nb*tile_height+icon_height+padding_icon)], 255))
-    for col_nb in range(nb_columns+1):
-        canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height+padding_icon), (X+col_nb*tile_width, Y+height)], 255))
-        
-    #Adding tasks in the table
-    table = [ ["" for i in range(nb_columns)] for j in range(nb_lines) ]
-    possible_positions = [[i//nb_columns, i%nb_columns] for i in range(nb_columns*nb_lines)] # create a list of possible solutions that will reduce when the loop is running (bc possible positions will less and less be available)
-    rd.shuffle(tasks) # It could be useful if there is more tasks than cells : it will change tasks while updating
-
-    while len(tasks) > 0 and len(possible_positions) > 0:
-        element = tasks.pop()
-        position_taken = possible_positions.pop(rd.randint(0, len(possible_positions)-1))
-        line_index, col_index = position_taken[0], position_taken[1]
-        table[line_index][col_index] = element       
+    # Display task like this
+    # To do:
+    #        - item 1   - item 2
+    #        - item 2   - item 3
+    #        - item 4   
+    X_corner = X + 100
+    Y_corner = Y + 50
+    X_spacing = 150
+    Y_spacing = 50
+    for i in range(len(tasks)): 
+        element = tasks[i]
+        canva.add_object(Text(chalk_font, X_corner + (i%2)*X_spacing, Y_corner + (i//2)*Y_spacing, "-" + element, 0, "left"))
     
-    for y in range(nb_lines):
-        for x in range(nb_columns):
-            task_to_display = table[y][x]
-            pos_x, pos_y = X + x*tile_width + padding_text + rd.randint(-5,5), Y + y*tile_height + icon_height + padding_icon + padding_text
-            #canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
-            canva.add_object(Text(chalk_font, pos_x, pos_y, task_to_display, 0, "left"))
+#     #Displaying grid
+#     tile_width = width//nb_columns
+#     tile_height = (height-icon_height-padding_icon)//nb_lines
+#     for line_nb in range(nb_lines+1):
+#         canva.add_object(Line([(X,Y+line_nb*tile_height+icon_height+padding_icon), (X+width, Y+line_nb*tile_height+icon_height+padding_icon)], 255))
+#     for col_nb in range(nb_columns+1):
+#         canva.add_object(Line([(X+col_nb*tile_width,Y+icon_height+padding_icon), (X+col_nb*tile_width, Y+height)], 255))
+        
+#     #Adding tasks in the table
+#     table = [ ["" for i in range(nb_columns)] for j in range(nb_lines) ]
+#     possible_positions = [[i//nb_columns, i%nb_columns] for i in range(nb_columns*nb_lines)] # create a list of possible solutions that will reduce when the loop is running (bc possible positions will less and less be available)
+#     rd.shuffle(tasks) # It could be useful if there is more tasks than cells : it will change tasks while updating
+
+#     while len(tasks) > 0 and len(possible_positions) > 0:
+#         element = tasks.pop()
+#         position_taken = possible_positions.pop(rd.randint(0, len(possible_positions)-1))
+#         line_index, col_index = position_taken[0], position_taken[1]
+#         table[line_index][col_index] = element       
+    
+#     for y in range(nb_lines):
+#         for x in range(nb_columns):
+#             task_to_display = table[y][x]
+#             pos_x, pos_y = X + x*tile_width + padding_text + rd.randint(-5,5), Y + y*tile_height + icon_height + padding_icon + padding_text
+#             #canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
+#             canva.add_object(Text(chalk_font, pos_x, pos_y, task_to_display, 0, "left"))
         
     canva.add_object(Line([(X,Y), (X, Y+height)])) # Add an esthetic line
 
