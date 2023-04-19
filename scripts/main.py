@@ -112,12 +112,12 @@ def display_todolist(canva):
     #        - item 2   - item 3
     #        - item 4   
     X_corner = X + 100
-    Y_corner = Y + 50
-    X_spacing = 150
-    Y_spacing = 50
+    Y_corner = Y + 35
+    X_spacing = 200
+    Y_spacing = 30
     for i in range(len(tasks)): 
         element = tasks[i]
-        canva.add_object(Text(chalk_font, X_corner + (i%2)*X_spacing, Y_corner + (i//2)*Y_spacing, "-" + element, 0, "left"))
+        canva.add_object(Text(chalk_font, X_corner + (i%2)*X_spacing, Y_corner + (i//2)*Y_spacing, "- " + element, 0, "left"))
     
 #     #Displaying grid
 #     tile_width = width//nb_columns
