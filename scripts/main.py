@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
 text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
-chalk_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 18)
+chalk_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 28)
 
 other_size_fonts = [ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 18), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 20), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 24), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 28)]
 
