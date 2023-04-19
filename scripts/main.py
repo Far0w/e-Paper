@@ -29,6 +29,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 title_font = ImageFont.truetype(os.path.join(fontdir, 'BebasKai.ttf'), 50)
 text_font = ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16)
+chalk_font = ImageFont.truetype(os.path.join(fontdir, 'NiceChalk.ttf'), 18)
 
 other_size_fonts = [ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 16), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 18), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 20), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 24), ImageFont.truetype(os.path.join(fontdir, 'KeepCalm.ttf'), 28)]
 
@@ -126,7 +127,8 @@ def display_todolist(canva):
         for x in range(nb_columns):
             task_to_display = table[y][x]
             pos_x, pos_y = X + x*tile_width + padding_text + rd.randint(-5,5), Y + y*tile_height + icon_height + padding_icon + padding_text
-            canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
+            #canva.add_object(Text(rd.choice(other_size_fonts), pos_x, pos_y, task_to_display, 0, "left"))
+            canva.add_object(Text(chalk_font, pos_x, pos_y, task_to_display, 0, "left"))
         
     canva.add_object(Line([(X,Y), (X, Y+height)])) # Add an esthetic line
 
