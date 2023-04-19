@@ -59,7 +59,7 @@ def display_calendar_event(canva):
             canva.add_object(Line([X, Y+text_spacing*i_event+weeks_number*week_spacing, X+100, int(Y+text_spacing*i_event+weeks_number*week_spacing)]))
             weeks_number += 1
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str, 0))
-        canva.add_object(Text(text_font, X + 150, Y+text_spacing*i_event+weeks_number*week_spacing," | " + calendar_events[i_event][1], 0))
+        canva.add_object(Text(text_font, X + 140, Y+text_spacing*i_event+weeks_number*week_spacing," | " + calendar_events[i_event][1], 0))
         
 def display_weather_data(canva):
     X = -20
