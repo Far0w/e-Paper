@@ -47,7 +47,7 @@ def signal_handler(signal, frame): # To cut the infinite loop
 
 def display_calendar_event(canva):
     X = 15
-    Y = 530
+    Y = 535
     text_spacing = 20
     week_spacing = 8
     weeks_number = 0 #To store how many weeks are there
@@ -94,7 +94,7 @@ def display_todolist(canva):
     height = 150
     nb_lines = 4
     nb_columns = 3
-    padding_icon = 5
+    padding_icon = 10
     padding_text = 5 # To be more spaced out from border of the module
     canva.add_object(Rectangle(X = X, Y = Y, width = width, height = height, fill_color = 225, outline_color = 255, linewidth = 2))
     todo_icon = Image.open(os.path.join(picdir, 'to_do_icon.bmp'))
