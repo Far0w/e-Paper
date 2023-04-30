@@ -60,7 +60,7 @@ class WeatherAPI():
                 if (self.x['list'][i]['dt_txt'][8:10] == self.tomorrow_day_of_month):
                     self.tomorrow_temperatures.append(self.x['list'][i]['main']['temp'])
                     self.tomorrow_weathers.append(self.x['list'][i]['weather'][0]['description'])
-                    self.tomorrow_weathers_icons.append(self.x['list'][i]['weather'][0]['icon'])
+                    self.tomorrow_weathers_icons.append(self.x['list'][i]['weather'][0]['icon'][:-1])
             
             self.tomorrow_min_temperature = str( round( float( min( self.tomorrow_temperatures ) ) ) )
             self.tomorrow_max_temperature = str( round( float( max( self.tomorrow_temperatures ) ) ) )
