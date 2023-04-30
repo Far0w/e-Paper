@@ -70,8 +70,11 @@ def display_weather_data(canva):
     canva.add_object(Text(title_font, X+180, Y, "{}°C".format(weatherAPI.current_temperature), 0, "center"))
     canva.add_object(Text(text_font, X+180, Y+60, "{}hPa".format(weatherAPI.current_pressure), 0, "center"))
     canva.add_object(Text(text_font, X+180, Y+80, "{}%".format(weatherAPI.current_humidity), 0, "center"))
-    canva.add_object(Text(text_font, X+320, Y, "Tomorrow:", 0, "center"))
     canva.add_object(Line([X+300,Y+10,X+300,Y+90]))
+    canva.add_object(Text(text_font, X+320, Y, "Tomorrow:", 0, "center"))
+    canva.add_object(Text(text_font, X+340, Y + 20, "min: {}°C".format(weatherAPI.tomorrow_min_temperature), 0, "center"))
+    canva.add_object(Text(text_font, X+340, Y + 40, "max: {}°C".format(weatherAPI.tomorrow_max_temperature), 0, "center"))
+    canva.add_object(Text(text_font, X+320, Y + 50, "max: {}°C".format(weatherAPI.tomorrow_weather_icon), 0, "center"))
 
 def display_title_date(canva):
     X_size = 480
