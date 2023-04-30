@@ -76,10 +76,9 @@ def display_weather_data(canva):
     canva.add_object(Text(text_font, X+320, Y, "Tomorrow:", 0, "center"))
     #bmp_small = Image.open(os.path.join(picdir, weatherAPI.tomorrow_weather_icon + '_smaller.bmp'))
     bmp_small = Image.open(os.path.join(picdir, '03_smaller.bmp'))
-    canva.add_object(Picture(bmp_small, X+320,Y+50))
-    canva.add_object(Text(text_font, X+380, Y+40, "m: {}°C".format(weatherAPI.tomorrow_min_temperature), 0, "left"))
-    canva.add_object(Text(text_font, X+380, Y+65, "M: {}°C".format(weatherAPI.tomorrow_max_temperature), 0, "left"))
-    canva.add_object(Text(text_font, X+320, Y+50, "-> {}".format(weatherAPI.tomorrow_weather_icon), 0, "left"))
+    canva.add_object(Picture(bmp_small, X+290,Y))
+    canva.add_object(Text(text_font, X+400, Y+40, "m: {}°C".format(weatherAPI.tomorrow_min_temperature), 0, "left"))
+    canva.add_object(Text(text_font, X+400, Y+65, "M: {}°C".format(weatherAPI.tomorrow_max_temperature), 0, "left"))
 
 def display_title_date(canva):
     X_size = 480
