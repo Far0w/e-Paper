@@ -67,7 +67,7 @@ def display_weather_data(canva):
     
     bmp = Image.open(os.path.join(picdir, weatherAPI.current_weather_icon + '.bmp'))
     canva.add_object(Picture(bmp, X,Y-50))
-    bmp_small = Image.open(os.path.join(picdir, "{}_smaller.bmp".format(weatherAPI.tomorrow_min_temperature)))
+    bmp_small = Image.open(os.path.join(picdir, "{}_smaller.bmp".format(weatherAPI.tomorrow_weather_icon)))
     tomorrow_weather_icon
     canva.add_object(Picture(bmp_small, X+300,Y))
     
