@@ -90,7 +90,7 @@ def display_title_date(canva):
     
     
 def display_footer(canva):
-    canva.add_object(Rectangle(0,765,479,35,0))
+    canva.add_object(Rectangle(0,775,479,35,0))
     canva.add_object(Text(text_font, 10, 780, "Last update: {}/{} | {}.".format(date.today().strftime("%d"), date.today().strftime("%m"), date.today().strftime("%R")), 255, "center"))
     
 def display_todolist(canva):
