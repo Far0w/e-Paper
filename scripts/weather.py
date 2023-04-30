@@ -67,6 +67,7 @@ class WeatherAPI():
             self.tomorrow_max_temperature = str( round( float( max( self.tomorrow_temperatures ) ) ) )
             self.tomorrow_weather_desc = self.most_frequent(self.tomorrow_weathers)
             self.tomorrow_weather_icon = self.most_frequent(self.tomorrow_weathers_icons)
+            print(self.tomorrow_weather_icon)
 
         else:
             print("No weather data found.")
