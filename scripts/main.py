@@ -64,7 +64,7 @@ def display_calendar_event(canva):
 def display_weather_data(canva):
     X = -20
     Y = 100
-    bmp = Image.open(os.path.join(picdir, weatherAPI.icon + '.bmp'))
+    bmp = Image.open(os.path.join(picdir, weatherAPI.current_weather_icon + '.bmp'))
     canva.add_object(Picture(bmp, X,Y-50))
     
     canva.add_object(Text(title_font, X+180, Y, "{}°C".format(weatherAPI.current_temperature), 0, "center"))

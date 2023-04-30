@@ -55,7 +55,7 @@ class WeatherAPI():
         self.tomorrow_temperatures = []
             
         if self.x["cod"] != "404":
-            print(self.x)
+            #print(self.x)
             for i in range(len(self.x['list'])): # Checking each data and finding data for tommorow
                 if (self.x['list'][i]['dt_txt'][8:10] == self.tomorrow_day_of_month):
                     self.tomorrow_temperatures.append(self.x['list'][i]['main']['temp'])
