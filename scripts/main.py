@@ -91,7 +91,7 @@ def display_title_date(canva):
     #canva.add_object(Rectangle(0,0,X_size-1,Y_size-1))
     todayDate = date.today().strftime("%A %d %B")
     text_width, text_height = canva.draw.textsize(todayDate, title_font)
-    canva.add_object(Text(title_font, X_size//2 - (text_width / 2), Y_size//2 - (text_height / 2)-5, "Hell O", 0, "left"))
+    canva.add_object(Text(title_font, X_size//2 - (text_width / 2), Y_size//2 - (text_height / 2)-5, todayDate, 0, "left"))
     
     
 def display_footer(canva):
