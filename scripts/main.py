@@ -60,8 +60,11 @@ def display_calendar_event(canva):
             weeks_number += 1
         canva.add_object(Text(text_font, X, Y+text_spacing*i_event+weeks_number*week_spacing, date_str, 0))
         print(calendar_events[i_event][1])
-        canva.add_object(Text(text_font, X + 130, Y+text_spacing*i_event+weeks_number*week_spacing," · ", 0))
-        #canva.add_object(Text(text_font, X + 130, Y+text_spacing*i_event+weeks_number*week_spacing," · " + calendar_events[i_event][1], 0))
+        try:
+            canva.add_object(Text(text_font, X + 130, Y+text_spacing*i_event+weeks_number*week_spacing," · ", 0))
+            canva.add_object(Text(text_font, X + 130, Y+text_spacing*i_event+weeks_number*week_spacing," · " + str(calendar_events[i_event][1], 0)))
+        except:
+            print("ERROR: Impossible to write event #" + str(i) + " - " + str(calendar_events[i_event][1]))
         
 def display_weather_data(canva):
     X = -20
